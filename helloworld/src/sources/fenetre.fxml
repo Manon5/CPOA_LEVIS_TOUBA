@@ -7,7 +7,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" ><children><VBox alignment="CENTER_LEFT" prefHeight="276.0" prefWidth="602.0">
+<?import javafx.scene.control.*?>
+
+<VBox alignment="CENTER_LEFT" prefHeight="276.0" prefWidth="602.0" >
 <children>
 <GridPane prefHeight="235.0" prefWidth="554.0">
 <columnConstraints>
@@ -32,9 +34,8 @@
 <TextField  prefHeight="34.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.valignment="BASELINE"/>
 </children></GridPane></children></VBox>
 <FlowPane columnHalignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="600.0"><children>
-<VBox alignment="TOP_CENTER" prefHeight="53.0" prefWidth="602.0"><children>
-<Button mnemonicParsing="false"  text="Créer"/>
-</children></VBox></children></FlowPane>
-<FlowPane alignment="CENTER" columnHalignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="600.0"><children>
-<TextField  editable="false"/></children></FlowPane></children></FlowPane>
+<VBox alignment="TOP_CENTER" prefHeight="53.0" prefWidth="602.0" ><children>
+<Button mnemonicParsing="false"  text="Créer" />
+</children></VBox>
+
 
