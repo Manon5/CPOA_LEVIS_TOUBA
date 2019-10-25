@@ -22,6 +22,9 @@ public class Main extends Application{
 	@FXML
 	private Label id_lb_custom;
 	
+	private Stage st;
+
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {URL fxmlURL=getClass().getResource("/sources/accueil_temp.fxml");
@@ -30,7 +33,7 @@ public class Main extends Application{
 		Scene scene = new Scene((VBox) root, 600, 400);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("Ma première fenêtre JavaFX");
+		primaryStage.setTitle("Projet de CPOA");
 		primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -42,5 +45,68 @@ public class Main extends Application{
 		
 		this.id_lb_custom.setText("test");
 	}
+	
+	public void addRevue() {
+		Stage test = new Stage();
+		try {URL fxmlURL=getClass().getResource("/sources/saisir_revue.fxml");
+		FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
+		Node root = fxmlLoader.load();
+		Scene scene = new Scene((VBox) root, 600, 400);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		test.setScene(scene);
+		test.setTitle("Saisir une revue");
+		test.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	
+	public void addClient() {
+		Stage test = new Stage();
+		try {URL fxmlURL=getClass().getResource("/sources/saisir_client.fxml");
+		FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
+		Node root = fxmlLoader.load();
+		Scene scene = new Scene((VBox) root, 600, 400);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		test.setScene(scene);
+		test.setTitle("Saisir un client");
+		test.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void addPeriod() {
+		Stage test = new Stage();
+		try {URL fxmlURL=getClass().getResource("/sources/saisir_period.fxml");
+		FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
+		Node root = fxmlLoader.load();
+		Scene scene = new Scene((VBox) root, 600, 400);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		test.setScene(scene);
+		test.setTitle("Saisir une périodicité");
+		test.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void addAbo() {
+		Stage test = new Stage();
+		try {URL fxmlURL=getClass().getResource("/sources/saisir_abonnement.fxml");
+		FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
+		Node root = fxmlLoader.load();
+		Scene scene = new Scene((VBox) root, 600, 400);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		test.setScene(scene);
+		test.setTitle("Saisir un abonnement");
+		test.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 
 }
