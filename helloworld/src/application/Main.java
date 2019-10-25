@@ -3,7 +3,10 @@ package application;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
+import FxVues.*;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,34 +50,12 @@ public class Main extends Application{
 	}
 	
 	public void addRevue() {
-		Stage test = new Stage();
-		try {URL fxmlURL=getClass().getResource("/sources/saisir_revue.fxml");
-		FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
-		Node root = fxmlLoader.load();
-		Scene scene = new Scene((VBox) root, 600, 400);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		test.setScene(scene);
-		test.setTitle("Saisir une revue");
-		test.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		AjoutRevueVue V = new AjoutRevueVue();
 	}
 
 	
 	public void addClient() {
-		Stage test = new Stage();
-		try {URL fxmlURL=getClass().getResource("/sources/saisir_client.fxml");
-		FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
-		Node root = fxmlLoader.load();
-		Scene scene = new Scene((VBox) root, 600, 400);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		test.setScene(scene);
-		test.setTitle("Saisir un client");
-		test.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		AjoutClientVue V = new AjoutClientVue();
 	}
 	
 	public void addPeriod() {
