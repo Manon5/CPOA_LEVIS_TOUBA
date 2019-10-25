@@ -3,13 +3,19 @@ package FxControleurs;
 import FxVues.AjoutAboVue;
 
 public class AjoutAboCtrl {
+	
+	private AjoutAboVue vue;
 
 	public void setVue(AjoutAboVue V) {
-		// TODO Stub de la méthode généré automatiquement
+		vue = V;
 	}
 	
 	public void creerRevue(){
 		System.out.println("ça marche");
+	}
+	
+	public void retourAccueil() {
+		this.vue.close();
 	}
 
 }

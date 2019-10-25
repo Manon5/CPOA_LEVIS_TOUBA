@@ -49,7 +49,7 @@
       </FlowPane>
       <FlowPane alignment="BOTTOM_LEFT" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Button fx:id="id_btn_retour" alignment="CENTER" mnemonicParsing="false" text="Retour à l'accueil" />
+            <Button fx:id="id_btn_retour" alignment="CENTER" mnemonicParsing="false" text="Retour à l'accueil" onAction="#retourAccueil"/>
          </children>
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />

@@ -4,12 +4,18 @@ import FxVues.AjoutClientVue;
 
 public class AjoutClientCtrl {
 	
+	private AjoutClientVue vue;
+	
 	public void setVue(AjoutClientVue V) {
-		// TODO Stub de la méthode généré automatiquement
+		vue = V;
 	}
 	
 	public void creerClient() {
 		
+	}
+
+	public void retourAccueil() {
+		this.vue.close();
 	}
 
 }

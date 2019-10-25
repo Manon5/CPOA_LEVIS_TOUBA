@@ -4,8 +4,19 @@ import FxVues.AjoutPeriodVue;
 import FxVues.AjoutRevueVue;
 
 public class AjoutPeriodCtrl {
+	
+	private AjoutPeriodVue vue;
 
 	public void setVue(AjoutPeriodVue V) {
-		// TODO Stub de la méthode généré automatiquement
+		vue = V;
+	}
+	
+	public void creerClient() {
+		
+	}
+	
+
+	public void retourAccueil() {
+		this.vue.close();
 	}
 }
