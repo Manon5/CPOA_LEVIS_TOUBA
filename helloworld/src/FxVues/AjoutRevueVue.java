@@ -18,7 +18,7 @@ public class AjoutRevueVue extends Stage {
 	        this.setTitle("Saisir une revue");
 			final FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL); 
 			final VBox node = (VBox)fxmlLoader.load();
-	        this.setScene(new Scene(node, 800, 500));
+	        this.setScene(new Scene(node, 600, 400));
 	        AjoutRevueCtrl controleur = fxmlLoader.getController();
 	        controleur.setVue(this);
 			this.initModality(Modality.APPLICATION_MODAL);

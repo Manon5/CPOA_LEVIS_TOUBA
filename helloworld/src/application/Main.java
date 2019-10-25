@@ -59,33 +59,11 @@ public class Main extends Application{
 	}
 	
 	public void addPeriod() {
-		Stage test = new Stage();
-		try {URL fxmlURL=getClass().getResource("/sources/saisir_period.fxml");
-		FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
-		Node root = fxmlLoader.load();
-		Scene scene = new Scene((VBox) root, 600, 400);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		test.setScene(scene);
-		test.setTitle("Saisir une périodicité");
-		test.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		AjoutPeriodVue V = new AjoutPeriodVue();
 	}
 	
 	public void addAbo() {
-		Stage test = new Stage();
-		try {URL fxmlURL=getClass().getResource("/sources/saisir_abonnement.fxml");
-		FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
-		Node root = fxmlLoader.load();
-		Scene scene = new Scene((VBox) root, 600, 400);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		test.setScene(scene);
-		test.setTitle("Saisir un abonnement");
-		test.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		AjoutAboVue V = new AjoutAboVue();
 	}
 	
 	

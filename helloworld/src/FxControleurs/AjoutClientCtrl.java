@@ -7,5 +7,9 @@ public class AjoutClientCtrl {
 	public void setVue(AjoutClientVue V) {
 		// TODO Stub de la méthode généré automatiquement
 	}
+	
+	public void creerClient() {
+		
+	}
 
 }
