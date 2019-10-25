@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FxControleurs.AjoutClientCtrl">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="FxControleurs.AjoutClientCtrl">
    <children>
       <GridPane prefHeight="206.0" prefWidth="600.0">
         <columnConstraints>
@@ -66,14 +66,22 @@
             </TextArea>
          </children>
       </GridPane>
-      <FlowPane alignment="CENTER" prefHeight="96.0" prefWidth="600.0">
+      <FlowPane alignment="CENTER" prefHeight="61.0" prefWidth="600.0">
          <children>
-            <Button fx:id="id_btn_creer" mnemonicParsing="false" text="Créer" onAction="#creerClient" />
+            <Button fx:id="id_btn_creer" mnemonicParsing="false" onAction="#creerClient" text="Créer" />
          </children>
       </FlowPane>
-      <FlowPane alignment="CENTER" prefHeight="98.0" prefWidth="600.0">
+      <FlowPane alignment="CENTER" prefHeight="71.0" prefWidth="600.0">
          <children>
             <Label fx:id="id_lb_custom" alignment="CENTER" text="chaine" />
+         </children>
+      </FlowPane>
+      <FlowPane alignment="BOTTOM_LEFT" prefHeight="76.0" prefWidth="600.0">
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+         <children>
+            <Button mnemonicParsing="false" text="Retour à l'accueil" />
          </children>
       </FlowPane>
    </children>
