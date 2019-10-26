@@ -2,7 +2,6 @@
 Un projet super sympa
 //////////////////////////////////////////////////////////
 To do all:
-  -gestion des champs non remplis (erreur)
   -ajout boutons modifier et supprimer (donnée de la base)
   -faire les liens entre les différentes fenêtres (abo.revue, bdd)
 //////////////////////////////////////////////////////////  
@@ -15,7 +14,5 @@ To do abonnement:
   -remplir les combobox
 //////////////////////////////////////////////////////////
 To do revue:
-  -forcer choix périodiciré
-  -retour à la ligne dans les text fields (description)
-  -forcer la saisie d'un nombre dans Tarif
+- remplir dynamiquement la combobox
 //////////////////////////////////////////////////////////
