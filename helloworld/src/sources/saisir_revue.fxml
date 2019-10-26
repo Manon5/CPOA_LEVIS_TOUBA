@@ -11,6 +11,14 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="FxControleurs.AjoutRevueCtrl">
    <children>
@@ -31,10 +39,18 @@
             <Label text="Description : " GridPane.rowIndex="1" />
             <Label text="Tarif : " GridPane.rowIndex="2" />
             <Label text="Périodicité : " GridPane.rowIndex="3" />
-            <TextField fx:id="if_tf_titre" GridPane.columnIndex="1" />
+            <TextField fx:id="if_tf_titre" id="id_tf_titre" GridPane.columnIndex="1" />
             <TextArea fx:id="id_tf_desc" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="id_tf_tarif" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ComboBox fx:id="id_cb_period" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox fx:id="id_cb_period" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" >
+            	<items>
+        			<FXCollections fx:factory="observableArrayList">
+         				 <String fx:value="Hebdomadaire" />
+      				     <String fx:value="Mensuel" />
+       				     <String fx:value="Quotidien" />
+     			    </FXCollections>
+      			</items>
+            </ComboBox>
          </children>
       </GridPane>
       <FlowPane alignment="CENTER" prefHeight="106.0" prefWidth="600.0">
