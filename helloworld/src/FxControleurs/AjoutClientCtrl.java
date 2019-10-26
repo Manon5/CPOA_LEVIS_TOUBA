@@ -9,6 +9,7 @@ import POJO.Revue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 
 public class AjoutClientCtrl {
 	
@@ -52,12 +53,36 @@ public class AjoutClientCtrl {
 		String code_postal = id_tf_codepost.getText().trim();
 		String ville = id_tf_ville.getText().trim();
 		String pays = id_tf_pays.getText().trim();
-		
-		MySQLClientDAO c = MySQLClientDAO.getInstance();
-		Client Cli = new Client(1, nom, prenom, no_rue, voie, code_postal, ville, pays);
-		//r.create(Cli);
-		id_lb_custom.setText("Ajouter à  la Bdd : nom='" + nom + "', prenom=" + prenom + "', no_rue=" + no_rue + "', voie=" + voie + "', code_postal=" + code_postal +"', ville=" + ville +"', pays=" + pays);
-		
+		// on vÃ©rifie que les champs ne sont pas vides
+		if(nom.equals("") || nom == null) {
+			id_lb_custom.setTextFill(Color.RED);
+			id_lb_custom.setText("Veuillez renseigner un nom svp");
+		}else if(prenom.equals("") || prenom == null) {
+			id_lb_custom.setTextFill(Color.RED);
+			id_lb_custom.setText("Veuillez renseigner la prenom svp");
+		}else if(no_rue.equals("") || no_rue == null) {
+			id_lb_custom.setTextFill(Color.RED);
+			id_lb_custom.setText("Veuillez renseigner un numéro de rue svp");
+		}else if(voie.equals("") || voie == null) {
+			id_lb_custom.setTextFill(Color.RED);
+			id_lb_custom.setText("Veuillez entrer un nom de rue correct svp");
+		}else if(code_postal.equals("") || code_postal == null) {
+			id_lb_custom.setTextFill(Color.RED);
+			id_lb_custom.setText("Veuillez entrer un code postal correct svp");
+		}else if(ville.equals("") || ville == null) {
+			id_lb_custom.setTextFill(Color.RED);
+			id_lb_custom.setText("Veuillez entrer un nom de ville correct svp");
+		}else if(pays.equals("") || pays == null) {
+			id_lb_custom.setTextFill(Color.RED);
+			id_lb_custom.setText("Veuillez entrer un pays correct svp");
+		}else {
+			MySQLClientDAO c = MySQLClientDAO.getInstance();
+			Client Cli = new Client(1, nom, prenom, no_rue, voie, code_postal, ville, pays);
+			r.create(Cli);
+			// message de confirmation
+			id_lb_custom.setTextFill(Color.BLACK);
+			id_lb_custom.setText("Ajouter à  la Bdd : nom='" + nom + "', prenom=" + prenom + "', no_rue=" + no_rue + "', voie=" + voie + "', code_postal=" + code_postal +"', ville=" + ville +"', pays=" + pays);
+		}
 	}
 
 	public void retourAccueil() {
