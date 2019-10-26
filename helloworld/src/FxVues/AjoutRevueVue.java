@@ -16,13 +16,14 @@ public class AjoutRevueVue extends Stage {
 		try {
 			final URL fxmlURL= getClass().getResource("/sources/saisir_revue.fxml");
 	        this.setTitle("Saisir une revue");
-			final FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL); 
+			final FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 			final VBox node = (VBox)fxmlLoader.load();
-	        this.setScene(new Scene(node, 600, 400));
-	        AjoutRevueCtrl controleur = fxmlLoader.getController();
-	        controleur.setVue(this);
+			Scene scene = new Scene(node, 600, 400);
+			this.setScene(scene);
 			this.initModality(Modality.APPLICATION_MODAL);
-	        this.show();
+			AjoutRevueCtrl controleur = fxmlLoader.getController();
+			controleur.setVue(this);
+			this.show();
 		}catch(Exception e){
 			
 		}
