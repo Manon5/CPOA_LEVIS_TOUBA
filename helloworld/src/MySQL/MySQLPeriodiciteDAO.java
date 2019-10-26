@@ -111,15 +111,16 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 			PreparedStatement requete = laCo.prepareStatement("SELECT * FROM Periodicite WHERE libelle = ?");
 			requete.setString(1, libelle);
 			ResultSet res = requete.executeQuery();
-			laCo.close();
 			ArrayList<Periodicite> a = new ArrayList<Periodicite>();
 			Periodicite p = new Periodicite();
 			while(res.next()) {
 				p.setId(res.getInt("id_periodicite"));
 				p.setLibelle(res.getString("libelle"));
-
+				System.out.println(p.toString());
 				a.add(p);
 			}
+
+			laCo.close();
 			return a;
 			
 		}catch(SQLException e){

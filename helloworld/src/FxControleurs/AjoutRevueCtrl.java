@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -32,6 +33,9 @@ public class AjoutRevueCtrl{
 	
 	@FXML
 	private ComboBox id_cb_period;
+	
+	@FXML
+	private Label id_lb_custom;
 	
 	
 	private AjoutRevueVue vue;
@@ -53,11 +57,11 @@ public class AjoutRevueCtrl{
 		String period = id_cb_period.getSelectionModel().getSelectedItem().toString();
 		MySQLPeriodiciteDAO p = MySQLPeriodiciteDAO.getInstance();
 		int id = p.getByLibelle(period).get(0).getId();
-		System.out.println(p.getByLibelle(period));
-		//System.out.println(p.getByLibelle(period).get(0));
 		MySQLRevueDAO r = MySQLRevueDAO.getInstance();
 		Revue Rev = new Revue(1, titre, desc, tarif, "pas d'image", id);
 		//r.create(Rev);
+		id_lb_custom.setText("Ajouté à la Bdd : titre='" + titre + "', description=" + desc + "', tarif=" + tarif + "€, périodicité=" + period);
+		
 	}
 
 	public void retourAccueil() {
