@@ -2,7 +2,6 @@
 Un projet super sympa
 //////////////////////////////////////////////////////////
 To do all:
-  -afficher message quand ajout bdd (label)
   -gestion des champs non remplis (erreur)
   -ajout boutons modifier et supprimer (donnée de la base)
   -faire les liens entre les différentes fenêtres (abo.revue, bdd)
