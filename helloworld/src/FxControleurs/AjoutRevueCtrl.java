@@ -45,8 +45,7 @@ public class AjoutRevueCtrl{
 
 	public void setVue(AjoutRevueVue ajoutRevueVue) {
 		vue = ajoutRevueVue;
-		 
-		
+		id_tf_desc.setWrapText(true);	
 	}
 	
 	@FXML
