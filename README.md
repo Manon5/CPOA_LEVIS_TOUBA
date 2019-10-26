@@ -2,11 +2,12 @@
 Un projet super sympa
 //////////////////////////////////////////////////////////
 To do all:
-  -ajout boutons modifier et supprimer (donnée de la base)
+- faire une page d'accueil complète
+- afficher les données de la base
+  -ajout boutons modifier et supprimer (données de la base)
 //////////////////////////////////////////////////////////  
 To do client:
- -retour à la ligne dans les text fields (adresse)
- - refaire la vue
+- à faire
 //////////////////////////////////////////////////////////
 To do périodicité:
 - à faire
