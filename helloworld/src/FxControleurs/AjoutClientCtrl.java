@@ -62,7 +62,7 @@ public class AjoutClientCtrl {
 			id_lb_custom.setText("Veuillez renseigner la prenom svp");
 		}else if(no_rue.equals("") || no_rue == null) {
 			id_lb_custom.setTextFill(Color.RED);
-			id_lb_custom.setText("Veuillez renseigner un numéro de rue svp");
+			id_lb_custom.setText("Veuillez renseigner un numï¿½ro de rue svp");
 		}else if(voie.equals("") || voie == null) {
 			id_lb_custom.setTextFill(Color.RED);
 			id_lb_custom.setText("Veuillez entrer un nom de rue correct svp");
@@ -78,10 +78,10 @@ public class AjoutClientCtrl {
 		}else {
 			MySQLClientDAO c = MySQLClientDAO.getInstance();
 			Client Cli = new Client(1, nom, prenom, no_rue, voie, code_postal, ville, pays);
-			r.create(Cli);
+			c.create(Cli);
 			// message de confirmation
 			id_lb_custom.setTextFill(Color.BLACK);
-			id_lb_custom.setText("Ajouter à  la Bdd : nom='" + nom + "', prenom=" + prenom + "', no_rue=" + no_rue + "', voie=" + voie + "', code_postal=" + code_postal +"', ville=" + ville +"', pays=" + pays);
+			id_lb_custom.setText("Ajouter ï¿½ la Bdd : nom='" + nom + "', prenom=" + prenom + "', no_rue=" + no_rue + "', voie=" + voie + "', code_postal=" + code_postal +"', ville=" + ville +"', pays=" + pays);
 		}
 	}
 

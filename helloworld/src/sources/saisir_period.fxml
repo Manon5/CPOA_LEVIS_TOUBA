@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="FxControleurs.AjoutPeriodCtrl">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FxControleurs.AjoutPeriodCtrl">
    <children>
       <GridPane prefHeight="185.0" prefWidth="600.0">
         <columnConstraints>
@@ -23,17 +23,17 @@
         </rowConstraints>
          <children>
             <Label text="Type de périodicité  : " />
-            <TextField GridPane.columnIndex="1" />
+            <TextField fx:id="id_tf_period" GridPane.columnIndex="1" />
          </children>
       </GridPane>
       <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="600.0">
          <children>
-            <Button mnemonicParsing="false" text="Créer" />
+            <Button fx:id="id_btn_creer" mnemonicParsing="false" onAction="#creerPeriod" text="Créer" />
          </children>
       </FlowPane>
       <FlowPane alignment="CENTER" prefHeight="88.0" prefWidth="600.0">
          <children>
-            <Label />
+            <Label fx:id="id_lb_custom" />
          </children>
       </FlowPane>
       <FlowPane alignment="BOTTOM_LEFT" prefHeight="88.0" prefWidth="600.0">
@@ -41,7 +41,7 @@
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </padding>
          <children>
-            <Button fx:id="id_btn_retour" mnemonicParsing="false" text="Retour à l'accueil" onAction="#retourAccueil"/>
+            <Button fx:id="id_btn_retour" mnemonicParsing="false" onAction="#retourAccueil" text="Retour à l'accueil" />
          </children>
       </FlowPane>
    </children>
