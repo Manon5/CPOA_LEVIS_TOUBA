@@ -3,12 +3,13 @@ Un projet super sympa
 //////////////////////////////////////////////////////////
 To do all:
   -ajout boutons modifier et supprimer (donnée de la base)
-  -faire les liens entre les différentes fenêtres (abo.revue, bdd)
 //////////////////////////////////////////////////////////  
 To do client:
  -retour à la ligne dans les text fields (adresse)
+ - refaire la vue
 //////////////////////////////////////////////////////////
 To do périodicité:
+- à faire
 //////////////////////////////////////////////////////////
 To do abonnement:
   -remplir les combobox
