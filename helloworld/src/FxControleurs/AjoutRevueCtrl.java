@@ -53,7 +53,8 @@ public class AjoutRevueCtrl{
 		String period = id_cb_period.getSelectionModel().getSelectedItem().toString();
 		MySQLPeriodiciteDAO p = MySQLPeriodiciteDAO.getInstance();
 		int id = p.getByLibelle(period).get(0).getId();
-		System.out.println(id);
+		System.out.println(p.getByLibelle(period));
+		//System.out.println(p.getByLibelle(period).get(0));
 		MySQLRevueDAO r = MySQLRevueDAO.getInstance();
 		Revue Rev = new Revue(1, titre, desc, tarif, "pas d'image", id);
 		//r.create(Rev);
