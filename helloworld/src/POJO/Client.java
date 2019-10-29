@@ -33,8 +33,8 @@ public class Client {
 		this.id_client=id_client;
 	}
 	
-	public String setNom(String nom) {
-		return this.nom;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 	
 	public String getNom() {

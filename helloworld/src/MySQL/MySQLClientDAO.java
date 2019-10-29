@@ -33,8 +33,7 @@ public class MySQLClientDAO implements ClientDAO{
 	public boolean create(Client c) {
 		Connection laCo = Connexion.createConnexion();
 		try {
-			PreparedStatement requete = laCo.prepareStatement("insert into Client(nom, prenom, no_rue, voie, code_postal, ville, pays) value (?,?,?,?,?,?,?)",
-					Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement requete = laCo.prepareStatement("insert into Client(nom, prenom, no_rue, voie, code_postal, ville, pays) value (?,?,?,?,?,?,?)");
 			requete.setString(1, c.getNom());
 			requete.setString(2, c.getPrenom());
 			requete.setString(3, c.getNoRue());
