@@ -97,7 +97,7 @@ public class AjoutRevueCtrl{
 			r.create(Rev);
 			// message de confirmation
 			id_lb_custom.setTextFill(Color.BLACK);
-			id_lb_custom.setText("Ajouté  la Bdd : titre='" + titre + "', description=" + desc + "', tarif=" + tarif + "â‚¬, pÃ©riodicitÃ©=" + period);
+			id_lb_custom.setText("Revue " + titre + " ajoutée à la Bdd ");
 		}
 		
 		

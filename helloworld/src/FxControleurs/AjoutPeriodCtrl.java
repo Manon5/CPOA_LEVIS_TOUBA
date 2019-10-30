@@ -36,7 +36,7 @@ public class AjoutPeriodCtrl {
 			p.create(new Periodicite(1, libelle));
 			// message de confirmation
 			id_lb_custom.setTextFill(Color.BLACK);
-			id_lb_custom.setText("AjoutÃ© Ã  la Bdd : titre='" + libelle + "'");
+			id_lb_custom.setText("Périodicité " + libelle + " ajoutée à la bdd");
 		}
 	}
 	

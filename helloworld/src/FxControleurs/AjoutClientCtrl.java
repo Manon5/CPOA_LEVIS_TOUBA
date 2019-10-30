@@ -81,7 +81,7 @@ public class AjoutClientCtrl {
 			c.create(Cli);
 			// message de confirmation
 			id_lb_custom.setTextFill(Color.BLACK);
-			id_lb_custom.setText("Ajouté à la Bdd : nom='" + nom + "', prenom=" + prenom + "', no_rue=" + no_rue + "', voie=" + voie + "', code_postal=" + code_postal +"', ville=" + ville +"', pays=" + pays);
+			id_lb_custom.setText("Client " + nom + " " + prenom + " ajouté à la bdd");
 		}
 	}
 

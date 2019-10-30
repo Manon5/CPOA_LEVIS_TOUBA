@@ -38,7 +38,7 @@
       </GridPane>
       <FlowPane alignment="CENTER" prefHeight="61.0" prefWidth="600.0">
          <children>
-            <Button fx:id="id_btn_creer" mnemonicParsing="false" text="Créer" />
+            <Button fx:id="id_btn_creer" mnemonicParsing="false" text="Créer" onAction="#creerAbo" />
          </children>
       </FlowPane>
       <FlowPane alignment="CENTER" prefHeight="80.0" prefWidth="600.0">
