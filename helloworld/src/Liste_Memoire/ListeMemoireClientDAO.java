@@ -4,6 +4,7 @@ import java.util.List;
 
 import DAO.*;
 import POJO.Client;
+import javafx.collections.ObservableList;
 
 public class ListeMemoireClientDAO implements ClientDAO {
 
@@ -85,6 +86,14 @@ public class ListeMemoireClientDAO implements ClientDAO {
 		}
 
 		return instance;
+	}
+
+
+
+	@Override
+	public ObservableList<Client> getAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

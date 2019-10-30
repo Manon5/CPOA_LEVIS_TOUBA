@@ -91,6 +91,6 @@ public class Client {
 	
 	
 	public String toString() {
-		return + this.id_client + this.nom + this.prenom + this.no_rue + this.code_postal + this.ville + this.pays ;
+		return this.nom + " " +this.prenom ;
 	}
 }

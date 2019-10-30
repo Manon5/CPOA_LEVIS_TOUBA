@@ -8,6 +8,7 @@ import java.util.List;
 import DAO.*;
 import POJO.Periodicite;
 import POJO.Revue;
+import javafx.collections.ObservableList;
 
 public class ListeMemoireRevueDAO implements RevueDAO{
 
@@ -81,6 +82,12 @@ public class ListeMemoireRevueDAO implements RevueDAO{
 		}
 
 		return instance;
+	}
+
+	@Override
+	public ObservableList<Revue> getAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

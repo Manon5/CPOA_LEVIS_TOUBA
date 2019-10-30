@@ -6,7 +6,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import DAO.*;
+import POJO.Client;
 import POJO.Revue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import main.Connexion;
 
 public class MySQLRevueDAO implements RevueDAO{
@@ -239,12 +242,39 @@ public class MySQLRevueDAO implements RevueDAO{
 				r.setId(res.getInt("id_revue"));
 				r.setTitre(res.getString("titre"));
 				r.setDesc(res.getString("description"));
-				r.setTarif(res.getDouble("tarif"));
+				r.setTarif(res.getDouble("tarif_numero"));
 				r.setVisuel(res.getString("visuel"));
 				r.setIdPeriodicite(res.getInt("id_periodicite"));
 				a.add(r);
 			}
 			return a;
+			
+		}catch(SQLException e){
+			System.out.println("Pb select" + e.getMessage());
+			return null;
+		}
+	}
+	
+	
+	@Override
+	public ObservableList<Revue> getAll() {
+		Connection laCo = Connexion.createConnexion();
+		try {
+			PreparedStatement requete = laCo.prepareStatement("SELECT distinct * FROM Revue");
+			ResultSet res = requete.executeQuery();
+			ObservableList<Revue> a = FXCollections.observableArrayList();
+			while(res.next()) {
+				Revue r = new Revue();
+				r.setId(res.getInt("id_revue"));
+				r.setTitre(res.getString("titre"));
+				r.setDesc(res.getString("description"));
+				r.setTarif(res.getDouble("tarif_numero"));
+				r.setVisuel(res.getString("visuel"));
+				r.setIdPeriodicite(res.getInt("id_periodicite"));
+				a.add(r);
+			}
+			return a;
+
 			
 		}catch(SQLException e){
 			System.out.println("Pb select" + e.getMessage());

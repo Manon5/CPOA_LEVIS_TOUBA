@@ -1,5 +1,6 @@
 package DAO;
 import POJO.*;
+import javafx.collections.ObservableList;
 
 public interface ClientDAO extends DAO<Client>{
 
@@ -7,6 +8,7 @@ public interface ClientDAO extends DAO<Client>{
 	
 
 	public abstract Client getById(int id);
+	public ObservableList<Client> getAll();
 	
 }
 

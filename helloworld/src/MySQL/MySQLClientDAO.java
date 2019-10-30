@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import DAO.*;
 import POJO.Client;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import main.Connexion;
 
 public class MySQLClientDAO implements ClientDAO{
@@ -266,6 +268,35 @@ public class MySQLClientDAO implements ClientDAO{
 	public Object getDAOFactory(Persistance mysql) {
 		// TODO Stub de la méthode généré automatiquement
 		return null;
+	}
+
+
+
+	@Override
+	public ObservableList<Client> getAll() {
+		Connection laCo = Connexion.createConnexion();
+		try {
+			PreparedStatement requete = laCo.prepareStatement("SELECT distinct * FROM Client");
+			ResultSet res = requete.executeQuery();
+			ObservableList<Client> a = FXCollections.observableArrayList();
+			while(res.next()) {
+				Client c = new Client();
+				c.setId(res.getInt("id_client"));
+				c.setPrenom(res.getString("prenom"));
+				c.setNom(res.getString("nom"));
+				c.setNoRue(res.getString("no_rue"));
+				c.setVoie(res.getString("voie"));
+				c.setVille(res.getString("ville"));
+				c.setPays(res.getString("pays"));
+				a.add(c);
+			}
+			return a;
+
+			
+		}catch(SQLException e){
+			System.out.println("Pb select" + e.getMessage());
+			return null;
+		}
 	}
 
 }

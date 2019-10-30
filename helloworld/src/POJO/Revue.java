@@ -69,6 +69,6 @@ public class Revue {
 	}
 	
 	public String toString() {
-		return this.id_revue + this.titre + this.description + this.tarif_numero + this.visuel + this.id_periodicite;
+		return this.titre;
 	}
 }
