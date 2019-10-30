@@ -4,10 +4,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import DAO.PeriodiciteDAO;
 import FxVues.AjoutRevueVue;
 import MySQL.MySQLPeriodiciteDAO;
 import MySQL.MySQLRevueDAO;
+import POJO.Periodicite;
 import POJO.Revue;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -33,7 +36,7 @@ public class AjoutRevueCtrl{
 	private TextField id_tf_tarif;
 	
 	@FXML
-	private ComboBox id_cb_period;
+	private ComboBox<Periodicite> id_cb_period;
 	
 	@FXML
 	private Label id_lb_custom;
@@ -47,6 +50,9 @@ public class AjoutRevueCtrl{
 	public void setVue(AjoutRevueVue ajoutRevueVue) {
 		vue = ajoutRevueVue;
 		id_tf_desc.setWrapText(true);
+		MySQLPeriodiciteDAO p = MySQLPeriodiciteDAO.getInstance();
+		ObservableList<Periodicite> list = p.getAll(); 
+		id_cb_period.setItems(list);
 	}
 	
 	@FXML
@@ -76,7 +82,7 @@ public class AjoutRevueCtrl{
 			id_lb_custom.setText("Veuillez renseigner un tarif svp");
 		}else if(id_cb_period.getSelectionModel().getSelectedItem() == null) {
 			id_lb_custom.setTextFill(Color.RED);
-			id_lb_custom.setText("Veuillez choisir la pÃ©riodicitÃ© svp");
+			id_lb_custom.setText("Veuillez choisir la périodicité svp");
 		}else if(tarifInvalide == true) {
 			id_lb_custom.setTextFill(Color.RED);
 			id_lb_custom.setText("Veuillez entrer un tarif correct svp");

@@ -6,6 +6,7 @@ import java.util.List;
 import DAO.PeriodiciteDAO;
 import DAO.Persistance;
 import POJO.Periodicite;
+import javafx.collections.ObservableList;
 
 public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
 
@@ -87,6 +88,12 @@ public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
 	@Override
 	public Object getDAOFactory(Persistance mysql) {
 		// TODO Stub de la méthode généré automatiquement
+		return null;
+	}
+
+	@Override
+	public ObservableList<Periodicite> getAll() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	

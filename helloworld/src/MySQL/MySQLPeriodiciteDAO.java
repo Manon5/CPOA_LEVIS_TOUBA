@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import DAO.*;
 import POJO.Periodicite;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import main.Connexion;
 
 public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
@@ -44,7 +46,7 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 			}
 			laCo.close();
 			return true;
-		}catch(SQLException e){
+		}catch(Exception e){
 			System.out.println("Pb select" + e.getMessage());
 		return false;
 	}
@@ -60,7 +62,7 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 			requete.executeUpdate();
 			laCo.close();
 			return true;
-		}catch(SQLException e){
+		}catch(Exception e){
 			System.out.println("Pb select" + e.getMessage());
 			return false;
 		}
@@ -77,7 +79,7 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 			
 			return true;
 			
-		}catch(SQLException e){
+		}catch(Exception e){
 			System.out.println("Pb select" + e.getMessage());
 			return false;
 		}
@@ -98,7 +100,7 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 			}
 			return p;
 			
-		}catch(SQLException e){
+		}catch(Exception e){
 			System.out.println("Pb select" + e.getMessage());
 			return null;
 		}
@@ -112,8 +114,8 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 			requete.setString(1, libelle);
 			ResultSet res = requete.executeQuery();
 			ArrayList<Periodicite> a = new ArrayList<Periodicite>();
-			Periodicite p = new Periodicite();
 			while(res.next()) {
+				Periodicite p = new Periodicite();
 				p.setId(res.getInt("id_periodicite"));
 				p.setLibelle(res.getString("libelle"));
 				System.out.println(p.toString());
@@ -123,11 +125,34 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 			laCo.close();
 			return a;
 			
+		}catch(Exception e){
+			System.out.println("Pb select" + e.getMessage());
+			return null;
+		}
+	}
+	
+	public ObservableList<Periodicite> getAll(){
+		Connection laCo = Connexion.createConnexion();
+		try {
+			PreparedStatement requete = laCo.prepareStatement("SELECT distinct * FROM Periodicite");
+			ResultSet res = requete.executeQuery();
+			ObservableList<Periodicite> a = FXCollections.observableArrayList();
+			while(res.next()) {
+				Periodicite p = new Periodicite();
+				p.setId(res.getInt("id_periodicite"));
+				p.setLibelle(res.getString("libelle"));
+				a.add(p);
+			}
+
+			laCo.close();
+			return a;
 		}catch(SQLException e){
 			System.out.println("Pb select" + e.getMessage());
 			return null;
 		}
 	}
+	
+
 	
 	
 	

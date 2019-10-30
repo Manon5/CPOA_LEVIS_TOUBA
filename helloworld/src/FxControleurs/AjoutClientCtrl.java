@@ -65,7 +65,7 @@ public class AjoutClientCtrl {
 			id_lb_custom.setText("Veuillez renseigner un numéro de rue svp");
 		}else if(voie.equals("") || voie == null) {
 			id_lb_custom.setTextFill(Color.RED);
-			id_lb_custom.setText("Veuillez entrer un numéro de rue correct svp");
+			id_lb_custom.setText("Veuillez renseigner la voie svp");
 		}else if(code_postal.equals("") || code_postal == null) {
 			id_lb_custom.setTextFill(Color.RED);
 			id_lb_custom.setText("Veuillez entrer un code postal correct svp");

@@ -30,7 +30,7 @@ public int getId() {
  }
  
  public String toString() {
-	 return this.id_periodicite + this.libelle;
+	 return this.libelle;
  }
 
 }

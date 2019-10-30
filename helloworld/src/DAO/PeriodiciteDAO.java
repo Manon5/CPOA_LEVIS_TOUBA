@@ -1,5 +1,8 @@
 package DAO;
+import java.util.ArrayList;
+
 import POJO.*;
+import javafx.collections.ObservableList;
 
 public interface PeriodiciteDAO extends DAO<Periodicite>{
 	
@@ -7,5 +10,6 @@ public interface PeriodiciteDAO extends DAO<Periodicite>{
 	
 
 	public abstract Periodicite getById(int id);
+	public ObservableList<Periodicite> getAll();
 
 }
