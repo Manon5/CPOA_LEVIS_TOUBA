@@ -3,19 +3,25 @@ package FxControleurs;
 import FxVues.AjoutPeriodVue;
 import FxVues.AjoutRevueVue;
 import MySQL.MySQLPeriodiciteDAO;
+import MySQL.MySQLRevueDAO;
 import POJO.Periodicite;
+import POJO.Revue;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 
 public class AjoutPeriodCtrl {
 
-	@FXML
-	private TextField id_tf_period;	
-	
-	@FXML
-	private Label id_lb_custom;
+	@FXML private TextField id_tf_period;	
+	@FXML private Label id_lb_custom;
+	@FXML private TableView<Periodicite> id_table;
+	@FXML private TableColumn id_col_id;
+	@FXML private TableColumn id_col_libelle;
 	
 	private AjoutPeriodVue vue;
 	
@@ -23,6 +29,19 @@ public class AjoutPeriodCtrl {
 
 	public void setVue(AjoutPeriodVue ajoutPeriodVue) {
 		vue = ajoutPeriodVue;
+		remplirTable();
+	}
+	
+	public void remplirTable() {
+		
+		id_table.getItems().clear();
+		//on prépare les colonnes
+		id_col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+		id_col_libelle.setCellValueFactory(new PropertyValueFactory<>("libelle"));
+		
+		MySQLPeriodiciteDAO c = MySQLPeriodiciteDAO.getInstance();
+		ObservableList test = c.getAll();
+		id_table.getItems().addAll(test);
 	}
 	
 	public void creerPeriod() {
@@ -38,6 +57,8 @@ public class AjoutPeriodCtrl {
 			id_lb_custom.setTextFill(Color.BLACK);
 			id_lb_custom.setText("Périodicité " + libelle + " ajoutée à la bdd");
 		}
+		
+		remplirTable();
 	}
 	
 

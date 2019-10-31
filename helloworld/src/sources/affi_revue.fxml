@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="483.0" prefWidth="989.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="519.0" prefWidth="1307.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FxControleurs.AjoutRevueCtrl">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -46,17 +51,17 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="426.0" prefWidth="989.0" VBox.vgrow="ALWAYS">
          <children>
-            <TableView layoutX="11.0" layoutY="17.0" prefHeight="406.0" prefWidth="664.0">
+            <TableView layoutX="11.0" layoutY="17.0" prefHeight="406.0" prefWidth="664.0" fx:id="id_table">
               <columns>
-                  <TableColumn prefWidth="36.0" text="Id" />
-                <TableColumn prefWidth="101.0" text="Titre" />
-                <TableColumn prefWidth="268.0" text="Description" />
-                  <TableColumn prefWidth="51.0" text="Tarif" />
-                  <TableColumn prefWidth="115.0" text="Périodicité" />
-                  <TableColumn prefWidth="92.0" text="Abonnements" />
+                  <TableColumn prefWidth="36.0" text="Id" fx:id="id_col_id"/>
+                <TableColumn prefWidth="101.0" text="Titre" fx:id="id_col_titre"/>
+                <TableColumn prefWidth="268.0" text="Description" fx:id="id_col_desc"/>
+                  <TableColumn prefWidth="51.0" text="Tarif" fx:id="id_col_tarif"/>
+                  <TableColumn prefWidth="115.0" text="Périodicité" fx:id="id_col_period"/>
+                  <TableColumn prefWidth="92.0" text="Abonnements" fx:id="id_col_abo"/>
               </columns>
             </TableView>
-            <GridPane alignment="CENTER" layoutX="699.0" layoutY="17.0" prefHeight="165.0" prefWidth="264.0" style="-fx-border-color: grey;">
+            <GridPane alignment="CENTER" layoutX="699.0" layoutY="17.0" prefHeight="165.0" prefWidth="244.0" style="-fx-border-color: grey;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -73,7 +78,7 @@
                   <Button mnemonicParsing="false" text="Ajouter" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                </children>
             </GridPane>
-            <GridPane layoutX="699.0" layoutY="188.0" prefHeight="92.0" prefWidth="264.0" style="-fx-border-color: grey;">
+            <GridPane layoutX="699.0" layoutY="188.0" prefHeight="92.0" prefWidth="244.0" style="-fx-border-color: grey;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="369.0" minWidth="10.0" prefWidth="369.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.0" minWidth="0.0" prefWidth="0.0" />
@@ -87,7 +92,7 @@
                   <Button alignment="CENTER" mnemonicParsing="false" text="Trier par titre" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
-            <GridPane layoutX="698.0" layoutY="287.0" prefHeight="136.0" prefWidth="264.0" style="-fx-border-color: grey;">
+            <GridPane layoutX="698.0" layoutY="287.0" prefHeight="136.0" prefWidth="244.0" style="-fx-border-color: grey;">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="64.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="127.0" />
@@ -104,6 +109,53 @@
                   <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
+            <VBox layoutX="968.0" layoutY="17.0" prefHeight="406.0" prefWidth="306.0" style="-fx-border-color: grey;">
+               <children>
+                  <GridPane prefHeight="275.0" prefWidth="306.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="172.0" minWidth="10.0" prefWidth="171.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.0" minWidth="10.0" prefWidth="33.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="145.0" minHeight="0.0" prefHeight="107.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="131.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="105.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Titre : " />
+                        <Label text="Description : " GridPane.rowIndex="1" />
+                        <Label text="Tarif : " GridPane.rowIndex="2" />
+                        <Label text="Périodicité : " GridPane.rowIndex="3" />
+                        <TextField id="id_tf_titre" fx:id="id_tf_titre" GridPane.columnIndex="1" />
+                        <TextArea fx:id="id_tf_desc" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="id_tf_tarif" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="id_cb_period" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="Hebdomadaire" />
+                                 <String fx:value="Mensuel" />
+                                 <String fx:value="Quotidien" />
+                              </FXCollections>
+                           </items>
+                        </ComboBox>
+                     </children>
+                  </GridPane>
+                  <FlowPane alignment="CENTER" prefHeight="84.0" prefWidth="306.0">
+                     <children>
+                        <Button fx:id="id_btn_creer" mnemonicParsing="false" onAction="#creerRevue" text="Créer" />
+                     </children>
+                  </FlowPane>
+                  <FlowPane alignment="CENTER" prefHeight="75.0" prefWidth="306.0">
+                     <children>
+                        <Label fx:id="id_lb_custom" alignment="CENTER" />
+                     </children>
+                  </FlowPane>
+               </children>
+            </VBox>
+            <Button layoutX="11.0" layoutY="447.0" mnemonicParsing="false" onAction="#retourAccueil" text="Retour à l'accueil" />
+            <Label fx:id="id_error_label" layoutX="639.0" layoutY="447.0" prefHeight="25.0" prefWidth="73.0" />
          </children>
     </AnchorPane>
   </children>

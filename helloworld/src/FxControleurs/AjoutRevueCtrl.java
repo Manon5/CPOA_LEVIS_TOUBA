@@ -6,8 +6,10 @@ import java.util.ResourceBundle;
 
 import DAO.PeriodiciteDAO;
 import FxVues.AjoutRevueVue;
+import MySQL.MySQLClientDAO;
 import MySQL.MySQLPeriodiciteDAO;
 import MySQL.MySQLRevueDAO;
+import POJO.Client;
 import POJO.Periodicite;
 import POJO.Revue;
 import javafx.collections.ObservableList;
@@ -17,8 +19,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
@@ -26,20 +31,18 @@ import javafx.stage.Stage;
 
 public class AjoutRevueCtrl{
 	
-	@FXML
-	private TextField id_tf_titre;
-	
-	@FXML
-	private TextArea id_tf_desc;
-	
-	@FXML
-	private TextField id_tf_tarif;
-	
-	@FXML
-	private ComboBox<Periodicite> id_cb_period;
-	
-	@FXML
-	private Label id_lb_custom;
+	@FXML private TextField id_tf_titre; 
+	@FXML private TextArea id_tf_desc;
+	@FXML private TextField id_tf_tarif;
+	@FXML private ComboBox<Periodicite> id_cb_period;
+	@FXML private Label id_lb_custom;
+	@FXML private TableView<Revue> id_table;
+	@FXML private TableColumn id_col_id;
+	@FXML private TableColumn id_col_titre;
+	@FXML private TableColumn id_col_desc;
+	@FXML private TableColumn id_col_tarif;
+	@FXML private TableColumn id_col_period;
+	@FXML private TableColumn id_col_abo;
 	
 	
 	private AjoutRevueVue vue;
@@ -53,6 +56,22 @@ public class AjoutRevueCtrl{
 		MySQLPeriodiciteDAO p = MySQLPeriodiciteDAO.getInstance();
 		ObservableList<Periodicite> list = p.getAll(); 
 		id_cb_period.setItems(list);
+		remplirTable();
+	}
+	
+public void remplirTable() {
+		
+		id_table.getItems().clear();
+		//on prépare les colonnes
+		id_col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+		id_col_titre.setCellValueFactory(new PropertyValueFactory<>("titre"));
+		id_col_desc.setCellValueFactory(new PropertyValueFactory<>("desc"));
+		id_col_tarif.setCellValueFactory(new PropertyValueFactory<>("tarif"));
+		id_col_period.setCellValueFactory(new PropertyValueFactory<>("period"));
+		id_col_abo.setCellValueFactory(new PropertyValueFactory<>("abo"));
+		MySQLRevueDAO c = MySQLRevueDAO.getInstance();
+		ObservableList test = c.getAll();
+		id_table.getItems().addAll(test);
 	}
 	
 	@FXML
@@ -100,7 +119,7 @@ public class AjoutRevueCtrl{
 			id_lb_custom.setText("Revue " + titre + " ajoutée à la Bdd ");
 		}
 		
-		
+		remplirTable();
 	}
 
 	public void retourAccueil() {
