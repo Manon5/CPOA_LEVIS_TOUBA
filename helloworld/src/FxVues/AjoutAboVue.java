@@ -15,11 +15,11 @@ public class AjoutAboVue extends Stage {
 	
 	public AjoutAboVue() {
 		try {
-	        final URL fxmlURL= getClass().getResource("/sources/saisir_abonnement.fxml");
+	        final URL fxmlURL= getClass().getResource("/sources/affi_abo.fxml");
 	        this.setTitle("Saisir un abonnement");
 			final FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 			final VBox node = (VBox)fxmlLoader.load();
-			Scene scene = new Scene(node, 600, 400);
+			Scene scene = new Scene(node, 1307, 519);
 			this.setScene(scene);
 			this.initModality(Modality.APPLICATION_MODAL);
 			AjoutAboCtrl controleur = fxmlLoader.getController();

@@ -8,6 +8,7 @@ import DAO.*;
 import MySQL.MySQLAbonnementDAO;
 import POJO.Abonnement;
 import POJO.Revue;
+import javafx.collections.ObservableList;
 
 public class ListeMemoireAbonnementDAO implements AbonnementDAO{
 
@@ -113,6 +114,14 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO{
 		 }
 		}
 		return list;
+	}
+
+
+
+	@Override
+	public ObservableList<Abonnement> getAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

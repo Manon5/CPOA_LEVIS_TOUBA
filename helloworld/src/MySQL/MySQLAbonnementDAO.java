@@ -8,6 +8,9 @@ import java.util.ArrayList;
 
 import DAO.*;
 import POJO.Abonnement;
+import POJO.Client;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import main.Connexion;
 
 public class MySQLAbonnementDAO implements AbonnementDAO{
@@ -210,4 +213,32 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 			return null;
 		}
 	}
+	
+	
+	
+	@Override
+	public ObservableList<Abonnement> getAll() {
+		Connection laCo = Connexion.createConnexion();
+		try {
+		PreparedStatement requete = laCo.prepareStatement("SELECT distinct * FROM Abonnement");
+			ResultSet res = requete.executeQuery();
+			ObservableList<Abonnement> a = FXCollections.observableArrayList();
+			while(res.next()) {
+				Abonnement c = new Abonnement();
+				c.setIdClient(res.getInt("id_client"));
+				c.setIdRevue(res.getInt("id_revue"));
+				c.setDateDebut(res.getDate("date_debut").toLocalDate());
+				c.setDateFin(res.getDate("date_fin").toLocalDate());
+				a.add(c);
+			}
+			return a;
+
+			
+		}catch(SQLException e){
+			System.out.println("Pb select" + e.getMessage());
+			return null;
+		}
+	}
+	
+	
 }

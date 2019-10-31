@@ -1,6 +1,11 @@
 package FxControleurs;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import FxVues.AjoutAboVue;
 import MySQL.MySQLAbonnementDAO;
@@ -16,26 +21,26 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
+import main.Connexion;
 
 public class AjoutAboCtrl {
 	
 	private AjoutAboVue vue;
 
-	@FXML
-	private ComboBox<Client> id_cb_client;
-	
-	@FXML
-	private ComboBox<Revue> id_cb_revue;
-
-	@FXML
-	private DatePicker id_dp_debut;
-
-	@FXML
-	private DatePicker id_dp_fin;
-	
-	@FXML
-	private Label id_lb_custom;
+	@FXML private ComboBox<Client> id_cb_client;
+	@FXML private ComboBox<Revue> id_cb_revue;
+	@FXML private DatePicker id_dp_debut;
+	@FXML private DatePicker id_dp_fin;
+	@FXML private Label id_lb_custom;
+	@FXML private TableView<Abonnement> id_table;
+	@FXML private TableColumn id_col_client;
+	@FXML private TableColumn id_col_revue;
+	@FXML private TableColumn id_col_date_deb;
+	@FXML private TableColumn id_col_date_fin;
 
 	public void setVue(AjoutAboVue V) {
 		vue = V;
@@ -47,9 +52,23 @@ public class AjoutAboCtrl {
 		ObservableList<Revue> list2 = r.getAll(); 
 		System.out.println(list2.toString());
 		id_cb_revue.setItems(list2);
+		
+		remplirTable();
 	}
 	
-	public void creerRevue(){
+	public void remplirTable() {
+		
+		id_table.getItems().clear();
+		//on prépare les colonnes
+		id_col_client.setCellValueFactory(new PropertyValueFactory<>("idClient"));
+		id_col_revue.setCellValueFactory(new PropertyValueFactory<>("idRevue"));
+		id_col_date_deb.setCellValueFactory(new PropertyValueFactory<>("dateDebut"));
+		id_col_date_fin.setCellValueFactory(new PropertyValueFactory<>("dateFin"));
+		MySQLAbonnementDAO c = MySQLAbonnementDAO.getInstance();
+		ObservableList test = c.getAll();
+		id_table.getItems().addAll(test);
+
+		
 	}
 	
 	public void retourAccueil() {
@@ -88,6 +107,7 @@ public class AjoutAboCtrl {
 			id_lb_custom.setTextFill(Color.BLACK);
 			id_lb_custom.setText("Abonnement ajouté à la Bdd ");
 		}
+		remplirTable();
 	}
 
 	}
