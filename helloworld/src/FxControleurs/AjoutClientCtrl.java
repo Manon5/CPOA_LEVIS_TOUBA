@@ -1,14 +1,21 @@
 package FxControleurs;
 
+import com.mysql.cj.xdevapi.Table;
+
+import DAO.ClientDAO;
 import FxVues.AjoutClientVue;
 import MySQL.MySQLClientDAO;
 import MySQL.MySQLPeriodiciteDAO;
 import MySQL.MySQLRevueDAO;
 import POJO.Client;
 import POJO.Revue;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 
 public class AjoutClientCtrl {
@@ -16,33 +23,45 @@ public class AjoutClientCtrl {
 	private AjoutClientVue vue;
 	
 	
-	@FXML
-	private TextField id_tf_nom;
-	
-	@FXML
-	private TextField id_tf_prenom;
-	
-	@FXML
-	private TextField id_tf_norue;
-	
-	@FXML
-	private TextField id_tf_voie;
-	
-	@FXML
-	private TextField id_tf_codepost;
-	
-	@FXML
-	private TextField id_tf_ville;
-	
-	@FXML
-	private TextField id_tf_pays;
-	
-	@FXML
-	private Label id_lb_custom;
+	@FXML private TextField id_tf_nom;
+	@FXML private TextField id_tf_prenom;
+	@FXML private TextField id_tf_norue;
+	@FXML private TextField id_tf_voie;
+	@FXML private TextField id_tf_codepost;
+	@FXML private TextField id_tf_ville;
+	@FXML private TextField id_tf_pays;
+	@FXML private Label id_lb_custom;
+	@FXML private TableView<Client> id_table;
+	@FXML private TableColumn id_col_id;
+	@FXML private TableColumn id_col_nom;
+	@FXML private TableColumn id_col_prenom;
+	@FXML private TableColumn id_col_no;
+	@FXML private TableColumn id_col_rue;
+	@FXML private TableColumn id_col_code;
+	@FXML private TableColumn id_col_ville;
+	@FXML private TableColumn id_col_pays;
 	
 	
 	public void setVue(AjoutClientVue V) {
 		vue = V;
+		remplirTable();
+	}
+	
+	public void remplirTable() {
+		
+		id_table.getItems().clear();
+		//on prépare les colonnes
+		id_col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+		id_col_nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+		id_col_prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+		id_col_no.setCellValueFactory(new PropertyValueFactory<>("noRue"));
+		id_col_rue.setCellValueFactory(new PropertyValueFactory<>("voie"));
+		id_col_code.setCellValueFactory(new PropertyValueFactory<>("codePostal"));
+		id_col_ville.setCellValueFactory(new PropertyValueFactory<>("ville"));
+		id_col_pays.setCellValueFactory(new PropertyValueFactory<>("pays"));
+		MySQLClientDAO c = MySQLClientDAO.getInstance();
+		ObservableList test = c.getAll();
+		id_table.getItems().addAll(test);
 	}
 	
 	public void creerClient() {
@@ -83,6 +102,8 @@ public class AjoutClientCtrl {
 			id_lb_custom.setTextFill(Color.BLACK);
 			id_lb_custom.setText("Client " + nom + " " + prenom + " ajouté à la bdd");
 		}
+		
+		remplirTable();
 	}
 
 	public void retourAccueil() {

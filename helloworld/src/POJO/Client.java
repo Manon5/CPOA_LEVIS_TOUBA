@@ -2,12 +2,12 @@ package POJO;
 
 public class Client {
 
-	private int id_client;
+	private int idclient;
 	private String nom;
 	private String prenom;
-	private String no_rue;
+	private String norue;
 	private String voie;
-	private String code_postal;
+	private String codepostal;
 	private String ville;
 	private String pays;
 	
@@ -26,11 +26,11 @@ public class Client {
 	}
 	
 	public int getId() {
-		return this.id_client;
+		return this.idclient;
 	}
 	
 	public void setId(int id_client) {
-		this.id_client=id_client;
+		this.idclient=id_client;
 	}
 	
 	public void setNom(String nom) {
@@ -50,23 +50,23 @@ public class Client {
 	}
 	
 	public String getNoRue() {
-		return this.no_rue;
+		return this.norue;
 	}
 	
 	public void setNoRue(String no_rue) {
-		this.no_rue=no_rue;
+		this.norue=no_rue;
 	}
 	
 	public String getCodePostal() {
-		return this.code_postal;
+		return this.codepostal;
 	}
 	
 	public void setCodePostal(String code_postal) {
-		this.code_postal=code_postal;
+		this.codepostal=code_postal;
 	}
 	
 	public String getVille() {
-		return this.nom;
+		return this.ville;
 	}
 	
 	public void setVille(String ville) {
