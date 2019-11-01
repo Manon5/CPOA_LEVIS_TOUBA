@@ -49,6 +49,7 @@ public class AjoutRevueCtrl{
 	@FXML private TableColumn id_col_tarif;
 	@FXML private TableColumn id_col_period;
 	@FXML private TableColumn id_col_abo;
+	@FXML private TextField id_recherche_tarif;
 	
 	
 	private AjoutRevueVue vue;
@@ -94,7 +95,6 @@ public void remplirTable() {
 			tarifInvalide = true;
 		}
 		
-		System.out.println(titre);
 		// on vÃ©rifie que les champs ne sont pas vides
 		if(titre.equals("") || titre == null) {
 			id_lb_custom.setTextFill(Color.RED);
@@ -194,6 +194,35 @@ public void remplirTable() {
 			System.out.println("Pb select" + e.getMessage());
 		}
 		id_table.getItems().addAll(a);
+	}
+	
+	public void rechercheTarif() {
+		
+		String tarifT = id_recherche_tarif.getText().trim();
+		double tarif = 0;
+		boolean tarifInvalide = false;
+		try {
+			tarif= Double.parseDouble(tarifT);
+		}catch(NumberFormatException e) {
+			tarifInvalide = true;
+		}
+		
+		if(tarifInvalide) {
+			//erreur
+		}else {
+			id_table.getItems().clear();
+			//on prépare les colonnes
+			id_col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+			id_col_titre.setCellValueFactory(new PropertyValueFactory<>("titre"));
+			id_col_desc.setCellValueFactory(new PropertyValueFactory<>("desc"));
+			id_col_tarif.setCellValueFactory(new PropertyValueFactory<>("tarif"));
+			id_col_period.setCellValueFactory(new PropertyValueFactory<>("idPeriodicite"));
+			id_col_abo.setCellValueFactory(new PropertyValueFactory<>("abo"));
+			MySQLRevueDAO c = MySQLRevueDAO.getInstance();
+			ObservableList test = c.getByTarifMin(tarif);
+			System.out.println(test.toString());
+			id_table.getItems().addAll(test);
+		}
 	}
 
 

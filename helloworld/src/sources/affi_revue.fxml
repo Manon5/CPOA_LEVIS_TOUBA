@@ -51,14 +51,14 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="426.0" prefWidth="989.0" VBox.vgrow="ALWAYS">
          <children>
-            <TableView layoutX="11.0" layoutY="17.0" prefHeight="406.0" prefWidth="664.0" fx:id="id_table">
+            <TableView fx:id="id_table" layoutX="11.0" layoutY="17.0" prefHeight="406.0" prefWidth="664.0">
               <columns>
-                  <TableColumn prefWidth="36.0" text="Id" fx:id="id_col_id"/>
-                <TableColumn prefWidth="101.0" text="Titre" fx:id="id_col_titre"/>
-                <TableColumn prefWidth="268.0" text="Description" fx:id="id_col_desc"/>
-                  <TableColumn prefWidth="51.0" text="Tarif" fx:id="id_col_tarif"/>
-                  <TableColumn prefWidth="115.0" text="Périodicité" fx:id="id_col_period"/>
-                  <TableColumn prefWidth="92.0" text="Abonnements" fx:id="id_col_abo"/>
+                  <TableColumn fx:id="id_col_id" prefWidth="36.0" text="Id" />
+                <TableColumn fx:id="id_col_titre" prefWidth="101.0" text="Titre" />
+                <TableColumn fx:id="id_col_desc" prefWidth="268.0" text="Description" />
+                  <TableColumn fx:id="id_col_tarif" prefWidth="51.0" text="Tarif" />
+                  <TableColumn fx:id="id_col_period" prefWidth="115.0" text="Périodicité" />
+                  <TableColumn fx:id="id_col_abo" prefWidth="92.0" text="Abonnements" />
               </columns>
             </TableView>
             <GridPane alignment="CENTER" layoutX="699.0" layoutY="17.0" prefHeight="165.0" prefWidth="244.0" style="-fx-border-color: grey;">
@@ -88,8 +88,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" text="Trier par périodicité" GridPane.halignment="CENTER" GridPane.valignment="CENTER" onAction="#triParPeriodicite"/>
-                  <Button alignment="CENTER" mnemonicParsing="false" text="Trier par titre" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" onAction="#triParTitre"/>
+                  <Button mnemonicParsing="false" onAction="#triParPeriodicite" text="Trier par périodicité" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#triParTitre" text="Trier par titre" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
             <GridPane layoutX="698.0" layoutY="287.0" prefHeight="136.0" prefWidth="244.0" style="-fx-border-color: grey;">
@@ -105,8 +105,8 @@
                <children>
                   <Label text="Rechercher : " GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                   <Label text="Tarif &gt; à :" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" text="OK" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button fx:id="id_btn_recherche" mnemonicParsing="false" onAction="#rechercheTarif" text="OK" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <TextField fx:id="id_recherche_tarif" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <VBox layoutX="968.0" layoutY="17.0" prefHeight="406.0" prefWidth="306.0" style="-fx-border-color: grey;">

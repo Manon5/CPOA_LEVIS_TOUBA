@@ -175,25 +175,25 @@ public class MySQLRevueDAO implements RevueDAO{
 	}
 	
 	
-	public ArrayList<Revue> getByTarif(double tarif){
+	public ObservableList<Revue> getByTarifMin(double tarif){
 		Connection laCo = Connexion.createConnexion();
 		try {
-			PreparedStatement requete = laCo.prepareStatement("SELECT * FROM Revue WHERE tarif = ?");
+			PreparedStatement requete = laCo.prepareStatement("SELECT distinct * FROM Revue WHERE tarif_numero > ?");
 			requete.setDouble(1, tarif);
 			ResultSet res = requete.executeQuery();
-			laCo.close();
-			ArrayList<Revue> a = new ArrayList<Revue>();
-			Revue r = new Revue();
+			ObservableList<Revue> a = FXCollections.observableArrayList();
 			while(res.next()) {
+				Revue r = new Revue();
 				r.setId(res.getInt("id_revue"));
 				r.setTitre(res.getString("titre"));
 				r.setDesc(res.getString("description"));
-				r.setTarif(res.getDouble("tarif"));
+				r.setTarif(res.getDouble("tarif_numero"));
 				r.setVisuel(res.getString("visuel"));
 				r.setIdPeriodicite(res.getInt("id_periodicite"));
 				a.add(r);
 			}
 			return a;
+
 			
 		}catch(SQLException e){
 			System.out.println("Pb select" + e.getMessage());
