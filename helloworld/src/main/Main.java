@@ -18,7 +18,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleGroup;
 
 public class Main extends Application{
 	
@@ -30,10 +31,10 @@ public class Main extends Application{
 	
 	@Override
 	public void start(Stage primaryStage) {
-		try {URL fxmlURL=getClass().getResource("/sources/accueil_temp.fxml");
+		try {URL fxmlURL=getClass().getResource("/sources/accueil.fxml");
 		FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 		Node root = fxmlLoader.load();
-		Scene scene = new Scene((VBox) root, 600, 400);
+		Scene scene = new Scene((VBox) root, 1307, 519);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Projet de CPOA");
