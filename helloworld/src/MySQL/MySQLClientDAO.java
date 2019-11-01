@@ -213,22 +213,22 @@ public class MySQLClientDAO implements ClientDAO{
 	}
 	
 	
-	public ArrayList<Client> getByVille(String v){
+	public ObservableList<Client> getByVille(String v){
 		Connection laCo = Connexion.createConnexion();
 		try {
 			PreparedStatement requete = laCo.prepareStatement("SELECT * FROM Client WHERE ville = ?");
 			requete.setString(1, v);
 			ResultSet res = requete.executeQuery();
-			laCo.close();
-			ArrayList<Client> a = new ArrayList<Client>();
-			Client c = new Client();
+			ObservableList<Client> a = FXCollections.observableArrayList();
 			while(res.next()) {
+				System.out.println("test");
+				Client c = new Client();
 				c.setId(res.getInt("id_client"));
-				c.setPrenom(res.getString("prenom"));
 				c.setNom(res.getString("nom"));
+				c.setPrenom(res.getString("prenom"));
 				c.setNoRue(res.getString("no_rue"));
-				c.setVoie(res.getString("voie"));
 				c.setCodePostal(res.getString("code_postal"));
+				c.setVoie(res.getString("voie"));
 				c.setVille(res.getString("ville"));
 				c.setPays(res.getString("pays"));
 				a.add(c);

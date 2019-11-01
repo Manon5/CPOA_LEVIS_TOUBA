@@ -39,6 +39,7 @@ public class AjoutClientCtrl {
 	@FXML private TextField id_tf_pays;
 	@FXML private TextField id_recherche_nom;
 	@FXML private TextField id_recherche_prenom;
+	@FXML private TextField id_recherche_ville;
 	@FXML private Label id_lb_custom;
 	@FXML private Label id_error_label;
 	@FXML private TableView<Client> id_table;
@@ -201,7 +202,33 @@ public class AjoutClientCtrl {
 		}
 	
 	public void rechercheVille() {
+		String ville = id_recherche_ville.getText().trim();
 		
+		if(ville.equals(null) || ville.equals("")) {
+			id_error_label.setTextFill(Color.RED);
+			id_error_label.setText("Entrer une ville pour la recherche svp");
+		}else {
+			id_table.getItems().clear();
+			//on prépare les colonnes
+			id_col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+			id_col_nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+			id_col_prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+			id_col_no.setCellValueFactory(new PropertyValueFactory<>("noRue"));
+			id_col_rue.setCellValueFactory(new PropertyValueFactory<>("voie"));
+			id_col_code.setCellValueFactory(new PropertyValueFactory<>("codePostal"));
+			id_col_ville.setCellValueFactory(new PropertyValueFactory<>("ville"));
+			id_col_pays.setCellValueFactory(new PropertyValueFactory<>("pays"));
+			MySQLClientDAO c = MySQLClientDAO.getInstance();
+			ObservableList test = c.getByVille(ville);
+			
+			
+			// si on a pas de résultat
+			if(test.isEmpty()) {
+				id_error_label.setTextFill(Color.RED);
+				id_error_label.setText("Aucun résultat trouvé");
+			}
+			id_table.getItems().addAll(test);
+		}
 	}
 	
 	
