@@ -87,7 +87,7 @@
                <children>
                   <Button mnemonicParsing="false" onAction="#triParClient" text="Trier par client" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                   <Button alignment="CENTER" mnemonicParsing="false" onAction="#triParRevue" text="Trier par revue" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                  <CheckBox mnemonicParsing="false" onAction="#remplirTable" text="Abonnements en cours seulement" fx:id="id_cb_en_cours" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                  <CheckBox fx:id="id_cb_en_cours" mnemonicParsing="false" onAction="#remplirTable" text="Abonnements en cours seulement" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <GridPane layoutX="698.0" layoutY="331.0" prefHeight="92.0" prefWidth="243.0" style="-fx-border-color: grey;">
@@ -103,7 +103,7 @@
                <children>
                   <Label text="Rechercher : " GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                   <Label text="Début &gt; à :" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" onDragDetected="#rechercheDateDeb" text="OK" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#rechercheDateDeb" text="OK" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                   <DatePicker fx:id="id_recherche_debut" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
@@ -145,7 +145,7 @@
                </children>
             </VBox>
             <Button layoutX="32.0" layoutY="440.0" mnemonicParsing="false" onAction="#retourAccueil" text="Retour à l'accueil" />
-            <Label fx:id="id_error_label" layoutX="667.0" layoutY="444.0" prefHeight="17.0" prefWidth="36.0" />
+            <Label fx:id="id_error_label" layoutX="474.0" layoutY="444.0" prefHeight="17.0" prefWidth="376.0" />
          </children>
     </AnchorPane>
   </children>

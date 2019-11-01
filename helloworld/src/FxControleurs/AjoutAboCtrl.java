@@ -36,6 +36,7 @@ public class AjoutAboCtrl {
 	@FXML private ComboBox<Revue> id_cb_revue;
 	@FXML private DatePicker id_dp_debut;
 	@FXML private DatePicker id_dp_fin;
+	@FXML private DatePicker id_recherche_debut;
 	@FXML private Label id_lb_custom;
 	@FXML private TableView<Abonnement> id_table;
 	@FXML private TableColumn id_col_client;
@@ -43,6 +44,7 @@ public class AjoutAboCtrl {
 	@FXML private TableColumn id_col_date_deb;
 	@FXML private TableColumn id_col_date_fin;
 	@FXML private CheckBox id_cb_en_cours;
+	@FXML private Label id_error_label;
 
 	public void setVue(AjoutAboVue V) {
 		vue = V;
@@ -122,6 +124,36 @@ public class AjoutAboCtrl {
 	
 	public void rechercheDateDeb() {
 		
+		
+		id_table.getItems().clear();
+		LocalDate date = id_recherche_debut.getValue();
+		
+		if(date == null) {
+			id_error_label.setTextFill(Color.RED);
+			id_error_label.setText("Entrer une date pour la recherche svp");
+		}else {
+			//on prépare les colonnes
+			id_col_client.setCellValueFactory(new PropertyValueFactory<>("idClient"));
+			id_col_revue.setCellValueFactory(new PropertyValueFactory<>("idRevue"));
+			id_col_date_deb.setCellValueFactory(new PropertyValueFactory<>("dateDebut"));
+			id_col_date_fin.setCellValueFactory(new PropertyValueFactory<>("dateFin"));
+
+			MySQLAbonnementDAO c = MySQLAbonnementDAO.getInstance();
+			ObservableList test = c.getByDateDebut(date);
+			
+			//si aucun résultat
+			if(test.isEmpty()) {
+				id_error_label.setTextFill(Color.RED);
+				id_error_label.setText("Aucun résultat");
+			}else {
+				id_error_label.setTextFill(Color.BLACK);
+				id_error_label.setText("Recherche terminée");
+			}
+			id_table.getItems().addAll(test);
+		}
+		
+
+
 	}
 	
 	public void triParClient(){

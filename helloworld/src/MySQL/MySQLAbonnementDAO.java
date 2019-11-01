@@ -164,16 +164,15 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 	
 
 	
-	public ArrayList<Abonnement> getByDateDebut(LocalDate dateDeb){
+	public ObservableList<Abonnement> getByDateDebut(LocalDate dateDeb){
 		Connection laCo = Connexion.createConnexion();
 		try {
-			PreparedStatement requete = laCo.prepareStatement("SELECT * FROM Abonnement WHERE date_debut = ?");
+			PreparedStatement requete = laCo.prepareStatement("SELECT * FROM Abonnement WHERE date_debut >= ?");
 			requete.setDate(1, java.sql.Date.valueOf(dateDeb));
 			ResultSet res = requete.executeQuery();
-			laCo.close();
-			ArrayList<Abonnement> a = new ArrayList<Abonnement>();
-			Abonnement r = new Abonnement();
+			ObservableList<Abonnement> a = FXCollections.observableArrayList();
 			while(res.next()) {
+				Abonnement r = new Abonnement();
 				r.setIdClient(res.getInt("id_client"));
 				r.setIdRevue(res.getInt("id_revue"));
 				r.setDateDebut(res.getDate("date_debut").toLocalDate());
