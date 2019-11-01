@@ -145,7 +145,7 @@ public class AjoutClientCtrl {
 				c1.setNom(res.getString("nom"));
 				c1.setNoRue(res.getString("no_rue"));
 				c1.setVoie(res.getString("voie"));
-				c.setCodePostal(res.getString("code_postal"));
+				c1.setCodePostal(res.getString("code_postal"));
 				c1.setVille(res.getString("ville"));
 				c1.setPays(res.getString("pays"));
 				a.add(c1);
@@ -186,7 +186,7 @@ public class AjoutClientCtrl {
 					c1.setNom(res.getString("nom"));
 					c1.setNoRue(res.getString("no_rue"));
 					c1.setVoie(res.getString("voie"));
-					c.setCodePostal(res.getString("code_postal"));
+					c1.setCodePostal(res.getString("code_postal"));
 					c1.setVille(res.getString("ville"));
 					c1.setPays(res.getString("pays"));
 					a.add(c1);
