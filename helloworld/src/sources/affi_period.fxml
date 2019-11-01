@@ -53,7 +53,7 @@
                   <TableColumn fx:id="id_col_libelle" prefWidth="524.0" text="Libellé" />
               </columns>
             </TableView>
-            <GridPane alignment="CENTER" layoutX="699.0" layoutY="17.0" prefHeight="165.0" prefWidth="264.0" style="-fx-border-color: grey;">
+            <GridPane alignment="CENTER" layoutX="699.0" layoutY="17.0" prefHeight="145.0" prefWidth="264.0" style="-fx-border-color: grey;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -61,16 +61,14 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Button alignment="CENTER" mnemonicParsing="false" text="Voir l'élément" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                   <Button mnemonicParsing="false" text="Modifier" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                   <Button mnemonicParsing="false" text="Supprimer" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                  <Button mnemonicParsing="false" text="Ajouter" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                </children>
             </GridPane>
-            <GridPane layoutX="699.0" layoutY="196.0" prefHeight="136.0" prefWidth="264.0" style="-fx-border-color: grey;">
+            <GridPane layoutX="699.0" layoutY="179.0" prefHeight="136.0" prefWidth="264.0" style="-fx-border-color: grey;">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="64.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="127.0" />
@@ -89,6 +87,11 @@
             </GridPane>
             <VBox layoutX="987.0" layoutY="17.0" prefHeight="406.0" prefWidth="296.0" style="-fx-border-color: grey;">
                <children>
+                  <FlowPane alignment="CENTER" prefHeight="89.0" prefWidth="294.0">
+                     <children>
+                        <Label text="Nouvelle périodicité" />
+                     </children>
+                  </FlowPane>
                   <GridPane prefHeight="231.0" prefWidth="294.0">
                      <columnConstraints>
                         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="117.0" minWidth="10.0" prefWidth="117.0" />

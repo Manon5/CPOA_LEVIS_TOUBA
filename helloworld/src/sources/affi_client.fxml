@@ -60,7 +60,7 @@
                   <TableColumn fx:id="id_col_pays" prefWidth="81.0" text="Pays" />
               </columns>
             </TableView>
-            <GridPane alignment="CENTER" layoutX="699.0" layoutY="17.0" prefHeight="111.0" prefWidth="221.0" style="-fx-border-color: grey;">
+            <GridPane alignment="CENTER" layoutX="699.0" layoutY="17.0" prefHeight="123.0" prefWidth="221.0" style="-fx-border-color: grey;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -75,7 +75,7 @@
                   <Button mnemonicParsing="false" text="Supprimer" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
-            <GridPane layoutX="699.0" layoutY="134.0" prefHeight="102.0" prefWidth="221.0" style="-fx-border-color: grey;">
+            <GridPane layoutX="699.0" layoutY="150.0" prefHeight="86.0" prefWidth="221.0" style="-fx-border-color: grey;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="369.0" minWidth="10.0" prefWidth="369.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.0" minWidth="0.0" prefWidth="0.0" />
@@ -115,6 +115,11 @@
             </GridPane>
             <VBox layoutX="939.0" layoutY="17.0" prefHeight="406.0" prefWidth="340.0" style="-fx-border-color: grey;">
                <children>
+                  <FlowPane alignment="CENTER" prefHeight="67.0" prefWidth="338.0">
+                     <children>
+                        <Label alignment="CENTER" text="Nouveau client " />
+                     </children>
+                  </FlowPane>
                   <GridPane prefHeight="269.0" prefWidth="338.0">
                      <columnConstraints>
                         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="112.0" />
@@ -210,7 +215,7 @@
                   </GridPane>
                   <FlowPane alignment="CENTER" prefHeight="80.0" prefWidth="381.0">
                      <children>
-                        <Button fx:id="id_btn_creer" mnemonicParsing="false" onAction="#creerClient" text="Nouveau client" />
+                        <Button fx:id="id_btn_creer" mnemonicParsing="false" onAction="#creerClient" text="Créer" />
                      </children>
                   </FlowPane>
                   <FlowPane alignment="CENTER" prefHeight="69.0" prefWidth="381.0">

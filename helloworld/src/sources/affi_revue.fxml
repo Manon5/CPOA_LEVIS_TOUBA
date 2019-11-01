@@ -61,7 +61,7 @@
                   <TableColumn fx:id="id_col_abo" prefWidth="92.0" text="Abonnements" />
               </columns>
             </TableView>
-            <GridPane alignment="CENTER" layoutX="699.0" layoutY="17.0" prefHeight="165.0" prefWidth="244.0" style="-fx-border-color: grey;">
+            <GridPane alignment="CENTER" layoutX="699.0" layoutY="17.0" prefHeight="146.0" prefWidth="244.0" style="-fx-border-color: grey;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -69,16 +69,14 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Button alignment="CENTER" mnemonicParsing="false" text="Voir l'élément" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                   <Button mnemonicParsing="false" text="Modifier" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                   <Button mnemonicParsing="false" text="Supprimer" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                  <Button mnemonicParsing="false" text="Ajouter" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                </children>
             </GridPane>
-            <GridPane layoutX="699.0" layoutY="188.0" prefHeight="92.0" prefWidth="244.0" style="-fx-border-color: grey;">
+            <GridPane layoutX="699.0" layoutY="167.0" prefHeight="113.0" prefWidth="244.0" style="-fx-border-color: grey;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="369.0" minWidth="10.0" prefWidth="369.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.0" minWidth="0.0" prefWidth="0.0" />
@@ -111,6 +109,11 @@
             </GridPane>
             <VBox layoutX="968.0" layoutY="17.0" prefHeight="406.0" prefWidth="306.0" style="-fx-border-color: grey;">
                <children>
+                  <FlowPane alignment="CENTER" prefHeight="86.0" prefWidth="304.0">
+                     <children>
+                        <Label text="Nouvelle revue" />
+                     </children>
+                  </FlowPane>
                   <GridPane prefHeight="275.0" prefWidth="306.0">
                      <columnConstraints>
                         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
