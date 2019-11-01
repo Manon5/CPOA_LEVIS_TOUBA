@@ -18,6 +18,7 @@ import POJO.Periodicite;
 import POJO.Revue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -41,6 +42,7 @@ public class AjoutAboCtrl {
 	@FXML private TableColumn id_col_revue;
 	@FXML private TableColumn id_col_date_deb;
 	@FXML private TableColumn id_col_date_fin;
+	@FXML private CheckBox id_cb_en_cours;
 
 	public void setVue(AjoutAboVue V) {
 		vue = V;
@@ -64,9 +66,17 @@ public class AjoutAboCtrl {
 		id_col_revue.setCellValueFactory(new PropertyValueFactory<>("idRevue"));
 		id_col_date_deb.setCellValueFactory(new PropertyValueFactory<>("dateDebut"));
 		id_col_date_fin.setCellValueFactory(new PropertyValueFactory<>("dateFin"));
-		MySQLAbonnementDAO c = MySQLAbonnementDAO.getInstance();
-		ObservableList test = c.getAll();
-		id_table.getItems().addAll(test);
+		
+		if(id_cb_en_cours.isSelected()) {
+			MySQLAbonnementDAO c = MySQLAbonnementDAO.getInstance();
+			ObservableList test = c.getEnCours();
+			id_table.getItems().addAll(test);
+		}else {
+			MySQLAbonnementDAO c = MySQLAbonnementDAO.getInstance();
+			ObservableList test = c.getAll();
+			id_table.getItems().addAll(test);
+		}
+		
 
 		
 	}
@@ -111,6 +121,14 @@ public class AjoutAboCtrl {
 	}
 	
 	public void rechercheDateDeb() {
+		
+	}
+	
+	public void triParClient(){
+		
+	}
+	
+	public void triParRevue(){
 		
 	}
 

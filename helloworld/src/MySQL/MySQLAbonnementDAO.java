@@ -241,4 +241,29 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 	}
 	
 	
+	@Override
+	public ObservableList<Abonnement> getEnCours() {
+		Connection laCo = Connexion.createConnexion();
+		try {
+		PreparedStatement requete = laCo.prepareStatement("SELECT distinct * FROM Abonnement WHERE date_debut <= NOW() AND date_fin >= NOW()");
+			ResultSet res = requete.executeQuery();
+			ObservableList<Abonnement> a = FXCollections.observableArrayList();
+			while(res.next()) {
+				Abonnement c = new Abonnement();
+				c.setIdClient(res.getInt("id_client"));
+				c.setIdRevue(res.getInt("id_revue"));
+				c.setDateDebut(res.getDate("date_debut").toLocalDate());
+				c.setDateFin(res.getDate("date_fin").toLocalDate());
+				a.add(c);
+			}
+			return a;
+
+			
+		}catch(SQLException e){
+			System.out.println("Pb select" + e.getMessage());
+			return null;
+		}
+	}
+	
+	
 }

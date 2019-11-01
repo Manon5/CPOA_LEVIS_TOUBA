@@ -126,5 +126,13 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO{
 
 
 
+	@Override
+	public ObservableList<Abonnement> getEnCours() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 }
 
