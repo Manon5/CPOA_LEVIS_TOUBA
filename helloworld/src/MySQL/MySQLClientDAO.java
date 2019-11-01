@@ -113,6 +113,7 @@ public class MySQLClientDAO implements ClientDAO{
 				c.setNom(res.getString("nom"));
 				c.setNoRue(res.getString("no_rue"));
 				c.setVoie(res.getString("voie"));
+				c.setCodePostal(res.getString("code_postal"));
 				c.setVille(res.getString("ville"));
 				c.setPays(res.getString("pays"));
 			}
@@ -139,6 +140,7 @@ public class MySQLClientDAO implements ClientDAO{
 				c.setPrenom(res.getString("prenom"));
 				c.setNom(res.getString("nom"));
 				c.setNoRue(res.getString("no_rue"));
+				c.setCodePostal(res.getString("code_postal"));
 				c.setVoie(res.getString("voie"));
 				c.setVille(res.getString("ville"));
 				c.setPays(res.getString("pays"));
@@ -167,6 +169,7 @@ public class MySQLClientDAO implements ClientDAO{
 				c.setPrenom(res.getString("prenom"));
 				c.setNom(res.getString("nom"));
 				c.setNoRue(res.getString("no_rue"));
+				c.setCodePostal(res.getString("code_postal"));
 				c.setVoie(res.getString("voie"));
 				c.setVille(res.getString("ville"));
 				c.setPays(res.getString("pays"));
@@ -196,6 +199,7 @@ public class MySQLClientDAO implements ClientDAO{
 				c.setNom(res.getString("nom"));
 				c.setNoRue(res.getString("no_rue"));
 				c.setVoie(res.getString("voie"));
+				c.setCodePostal(res.getString("code_postal"));
 				c.setVille(res.getString("ville"));
 				c.setPays(res.getString("pays"));
 				a.add(c);
@@ -224,6 +228,7 @@ public class MySQLClientDAO implements ClientDAO{
 				c.setNom(res.getString("nom"));
 				c.setNoRue(res.getString("no_rue"));
 				c.setVoie(res.getString("voie"));
+				c.setCodePostal(res.getString("code_postal"));
 				c.setVille(res.getString("ville"));
 				c.setPays(res.getString("pays"));
 				a.add(c);
@@ -251,6 +256,7 @@ public class MySQLClientDAO implements ClientDAO{
 				c.setPrenom(res.getString("prenom"));
 				c.setNom(res.getString("nom"));
 				c.setNoRue(res.getString("no_rue"));
+				c.setCodePostal(res.getString("code_postal"));
 				c.setVoie(res.getString("voie"));
 				c.setVille(res.getString("ville"));
 				c.setPays(res.getString("pays"));
@@ -286,6 +292,7 @@ public class MySQLClientDAO implements ClientDAO{
 				c.setNom(res.getString("nom"));
 				c.setNoRue(res.getString("no_rue"));
 				c.setVoie(res.getString("voie"));
+				c.setCodePostal(res.getString("code_postal"));
 				c.setVille(res.getString("ville"));
 				c.setPays(res.getString("pays"));
 				a.add(c);

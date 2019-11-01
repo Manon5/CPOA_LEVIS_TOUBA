@@ -1,5 +1,10 @@
 package FxControleurs;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import com.mysql.cj.xdevapi.Table;
 
 import DAO.ClientDAO;
@@ -9,6 +14,7 @@ import MySQL.MySQLPeriodiciteDAO;
 import MySQL.MySQLRevueDAO;
 import POJO.Client;
 import POJO.Revue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -17,6 +23,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
+import main.Connexion;
 
 public class AjoutClientCtrl {
 	
@@ -109,5 +116,85 @@ public class AjoutClientCtrl {
 	public void retourAccueil() {
 		this.vue.close();
 	}
+	
+	public void triParVille() {
 
-}
+		id_table.getItems().clear();
+		//on prépare les colonnes
+		id_col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+		id_col_nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+		id_col_prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+		id_col_no.setCellValueFactory(new PropertyValueFactory<>("noRue"));
+		id_col_rue.setCellValueFactory(new PropertyValueFactory<>("voie"));
+		id_col_code.setCellValueFactory(new PropertyValueFactory<>("codePostal"));
+		id_col_ville.setCellValueFactory(new PropertyValueFactory<>("ville"));
+		id_col_pays.setCellValueFactory(new PropertyValueFactory<>("pays"));
+		
+		MySQLClientDAO c = MySQLClientDAO.getInstance();
+		
+		Connection laCo = Connexion.createConnexion();
+
+		ObservableList<Client> a = FXCollections.observableArrayList();
+		try {
+			PreparedStatement requete = laCo.prepareStatement("SELECT distinct * FROM Client ORDER BY ville");
+			ResultSet res = requete.executeQuery();
+			while(res.next()) {
+				Client c1 = new Client();
+				c1.setId(res.getInt("id_client"));
+				c1.setPrenom(res.getString("prenom"));
+				c1.setNom(res.getString("nom"));
+				c1.setNoRue(res.getString("no_rue"));
+				c1.setVoie(res.getString("voie"));
+				c.setCodePostal(res.getString("code_postal"));
+				c1.setVille(res.getString("ville"));
+				c1.setPays(res.getString("pays"));
+				a.add(c1);
+			}
+		}catch(SQLException e){
+			System.out.println("Pb select" + e.getMessage());
+		}
+		id_table.getItems().addAll(a);
+	}
+	
+	
+	
+	public void triParClient() {
+
+			id_table.getItems().clear();
+			//on prépare les colonnes
+			id_col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+			id_col_nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+			id_col_prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+			id_col_no.setCellValueFactory(new PropertyValueFactory<>("noRue"));
+			id_col_rue.setCellValueFactory(new PropertyValueFactory<>("voie"));
+			id_col_code.setCellValueFactory(new PropertyValueFactory<>("codePostal"));
+			id_col_ville.setCellValueFactory(new PropertyValueFactory<>("ville"));
+			id_col_pays.setCellValueFactory(new PropertyValueFactory<>("pays"));
+			
+			MySQLClientDAO c = MySQLClientDAO.getInstance();
+			
+			Connection laCo = Connexion.createConnexion();
+
+			ObservableList<Client> a = FXCollections.observableArrayList();
+			try {
+				PreparedStatement requete = laCo.prepareStatement("SELECT distinct * FROM Client ORDER BY nom, prenom");
+				ResultSet res = requete.executeQuery();
+				while(res.next()) {
+					Client c1 = new Client();
+					c1.setId(res.getInt("id_client"));
+					c1.setPrenom(res.getString("prenom"));
+					c1.setNom(res.getString("nom"));
+					c1.setNoRue(res.getString("no_rue"));
+					c1.setVoie(res.getString("voie"));
+					c.setCodePostal(res.getString("code_postal"));
+					c1.setVille(res.getString("ville"));
+					c1.setPays(res.getString("pays"));
+					a.add(c1);
+				}
+			}catch(SQLException e){
+				System.out.println("Pb select" + e.getMessage());
+			}
+			id_table.getItems().addAll(a);
+		}
+	}
+

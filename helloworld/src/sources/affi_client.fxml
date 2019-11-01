@@ -87,8 +87,8 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" text="Trier par client" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <Button alignment="CENTER" mnemonicParsing="false" text="Trier par revue" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Button mnemonicParsing="false" text="Trier par nom" GridPane.halignment="CENTER" GridPane.valignment="CENTER" onAction="#triParClient" />
+                  <Button alignment="CENTER" mnemonicParsing="false" text="Trier par ville" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" onAction="#triParVille"/>
                   <CheckBox mnemonicParsing="false" text="Voir les abonnements en cours" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                </children>
             </GridPane>

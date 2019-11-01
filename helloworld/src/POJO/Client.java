@@ -71,6 +71,8 @@ public class Client {
 	
 	public void setVille(String ville) {
 		this.ville=ville;
+
+		System.out.println(ville);
 	}
 	
 	public String getPays() {
