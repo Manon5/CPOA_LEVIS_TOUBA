@@ -47,10 +47,10 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="426.0" prefWidth="989.0" VBox.vgrow="ALWAYS">
          <children>
-            <TableView layoutX="11.0" layoutY="17.0" prefHeight="406.0" prefWidth="664.0" fx:id="id_table">
+            <TableView fx:id="id_table" layoutX="11.0" layoutY="17.0" prefHeight="406.0" prefWidth="664.0">
               <columns>
-                  <TableColumn prefWidth="139.0" text="Id" fx:id="id_col_id"/>
-                  <TableColumn prefWidth="524.0" text="Libellé" fx:id="id_col_libelle"/>
+                  <TableColumn fx:id="id_col_id" prefWidth="139.0" text="Id" />
+                  <TableColumn fx:id="id_col_libelle" prefWidth="524.0" text="Libellé" />
               </columns>
             </TableView>
             <GridPane alignment="CENTER" layoutX="699.0" layoutY="17.0" prefHeight="165.0" prefWidth="264.0" style="-fx-border-color: grey;">
@@ -83,8 +83,8 @@
                <children>
                   <Label text="Rechercher : " GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                   <Label text="Libellé :" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" text="OK" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#rechercheLibelle" text="OK" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <TextField fx:id="id_recherche_libelle" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <VBox layoutX="987.0" layoutY="17.0" prefHeight="406.0" prefWidth="296.0" style="-fx-border-color: grey;">
@@ -116,7 +116,7 @@
                </children>
             </VBox>
             <Button layoutX="14.0" layoutY="443.0" mnemonicParsing="false" onAction="#retourAccueil" text="Retour à l'accueil" />
-            <Label fx:id="id_error_label" layoutX="665.0" layoutY="454.0" prefHeight="25.0" prefWidth="73.0" />
+            <Label fx:id="id_error_label" layoutX="467.0" layoutY="443.0" prefHeight="25.0" prefWidth="395.0" />
          </children>
     </AnchorPane>
   </children>

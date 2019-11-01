@@ -22,6 +22,8 @@ public class AjoutPeriodCtrl {
 	@FXML private TableView<Periodicite> id_table;
 	@FXML private TableColumn id_col_id;
 	@FXML private TableColumn id_col_libelle;
+	@FXML private TextField id_recherche_libelle;
+	@FXML private Label id_error_label;
 	
 	private AjoutPeriodVue vue;
 	
@@ -64,5 +66,30 @@ public class AjoutPeriodCtrl {
 
 	public void retourAccueil() {
 		this.vue.close();
+	}
+	
+	public void rechercheLibelle() {
+		String libelle = id_recherche_libelle.getText().trim();
+		
+		if(libelle.equals("") || libelle.equals(null)) {
+			id_error_label.setTextFill(Color.RED);
+			id_error_label.setText("Entrer un libellé pour la recherche svp");
+		}else {
+			id_table.getItems().clear();
+			//on prépare les colonnes
+			id_col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+			id_col_libelle.setCellValueFactory(new PropertyValueFactory<>("libelle"));
+			
+			MySQLPeriodiciteDAO c = MySQLPeriodiciteDAO.getInstance();
+			ObservableList test = c.getByLibelle(libelle);
+			
+			// si aucun résultat
+			if(test.isEmpty()) {
+				id_error_label.setTextFill(Color.RED);
+				id_error_label.setText("Aucun résultat");
+			}
+			id_table.getItems().addAll(test);
+		}
+		
 	}
 }

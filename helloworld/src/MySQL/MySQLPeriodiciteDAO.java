@@ -107,13 +107,13 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 	}
 	
 	
-	public ArrayList<Periodicite> getByLibelle(String libelle){
+	public ObservableList<Periodicite> getByLibelle(String libelle){
 		Connection laCo = Connexion.createConnexion();
 		try {
 			PreparedStatement requete = laCo.prepareStatement("SELECT * FROM Periodicite WHERE libelle = ?");
 			requete.setString(1, libelle);
 			ResultSet res = requete.executeQuery();
-			ArrayList<Periodicite> a = new ArrayList<Periodicite>();
+			ObservableList<Periodicite> a = FXCollections.observableArrayList();
 			while(res.next()) {
 				Periodicite p = new Periodicite();
 				p.setId(res.getInt("id_periodicite"));
