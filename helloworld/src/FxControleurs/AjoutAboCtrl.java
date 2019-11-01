@@ -109,5 +109,9 @@ public class AjoutAboCtrl {
 		}
 		remplirTable();
 	}
+	
+	public void rechercheDateDeb() {
+		
+	}
 
 	}
