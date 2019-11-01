@@ -2,6 +2,10 @@ package FxControleurs;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import DAO.PeriodiciteDAO;
@@ -12,6 +16,7 @@ import MySQL.MySQLRevueDAO;
 import POJO.Client;
 import POJO.Periodicite;
 import POJO.Revue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +33,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import main.Connexion;
 
 public class AjoutRevueCtrl{
 	
@@ -67,7 +73,7 @@ public void remplirTable() {
 		id_col_titre.setCellValueFactory(new PropertyValueFactory<>("titre"));
 		id_col_desc.setCellValueFactory(new PropertyValueFactory<>("desc"));
 		id_col_tarif.setCellValueFactory(new PropertyValueFactory<>("tarif"));
-		id_col_period.setCellValueFactory(new PropertyValueFactory<>("period"));
+		id_col_period.setCellValueFactory(new PropertyValueFactory<>("idPeriodicite"));
 		id_col_abo.setCellValueFactory(new PropertyValueFactory<>("abo"));
 		MySQLRevueDAO c = MySQLRevueDAO.getInstance();
 		ObservableList test = c.getAll();
@@ -124,6 +130,70 @@ public void remplirTable() {
 
 	public void retourAccueil() {
 		this.vue.close();
+	}
+	
+	public void triParTitre() {
+		id_table.getItems().clear();
+		//on prépare les colonnes
+		id_col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+		id_col_titre.setCellValueFactory(new PropertyValueFactory<>("titre"));
+		id_col_desc.setCellValueFactory(new PropertyValueFactory<>("desc"));
+		id_col_tarif.setCellValueFactory(new PropertyValueFactory<>("tarif"));
+		id_col_period.setCellValueFactory(new PropertyValueFactory<>("idPeriodicite"));
+		id_col_abo.setCellValueFactory(new PropertyValueFactory<>("abo"));
+		MySQLRevueDAO c = MySQLRevueDAO.getInstance();
+		Connection laCo = Connexion.createConnexion();
+
+		ObservableList<Revue> a = FXCollections.observableArrayList();
+		try {
+			PreparedStatement requete = laCo.prepareStatement("SELECT distinct * FROM Revue ORDER BY titre");
+			ResultSet res = requete.executeQuery();
+			while(res.next()) {
+				Revue r = new Revue();
+				r.setId(res.getInt("id_revue"));
+				r.setTitre(res.getString("titre"));
+				r.setDesc(res.getString("description"));
+				r.setTarif(res.getDouble("tarif_numero"));
+				r.setVisuel(res.getString("visuel"));
+				r.setIdPeriodicite(res.getInt("id_periodicite"));
+				a.add(r);
+			}
+		}catch(SQLException e){
+			System.out.println("Pb select" + e.getMessage());
+		}
+		id_table.getItems().addAll(a);
+	}
+	
+	public void triParPeriodicite() {
+		id_table.getItems().clear();
+		//on prépare les colonnes
+		id_col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+		id_col_titre.setCellValueFactory(new PropertyValueFactory<>("titre"));
+		id_col_desc.setCellValueFactory(new PropertyValueFactory<>("desc"));
+		id_col_tarif.setCellValueFactory(new PropertyValueFactory<>("tarif"));
+		id_col_period.setCellValueFactory(new PropertyValueFactory<>("idPeriodicite"));
+		id_col_abo.setCellValueFactory(new PropertyValueFactory<>("abo"));
+		MySQLRevueDAO c = MySQLRevueDAO.getInstance();
+		Connection laCo = Connexion.createConnexion();
+
+		ObservableList<Revue> a = FXCollections.observableArrayList();
+		try {
+			PreparedStatement requete = laCo.prepareStatement("SELECT distinct * FROM Revue ORDER BY id_periodicite");
+			ResultSet res = requete.executeQuery();
+			while(res.next()) {
+				Revue r = new Revue();
+				r.setId(res.getInt("id_revue"));
+				r.setTitre(res.getString("titre"));
+				r.setDesc(res.getString("description"));
+				r.setTarif(res.getDouble("tarif_numero"));
+				r.setVisuel(res.getString("visuel"));
+				r.setIdPeriodicite(res.getInt("id_periodicite"));
+				a.add(r);
+			}
+		}catch(SQLException e){
+			System.out.println("Pb select" + e.getMessage());
+		}
+		id_table.getItems().addAll(a);
 	}
 
 
