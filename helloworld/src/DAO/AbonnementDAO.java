@@ -9,5 +9,9 @@ public interface AbonnementDAO extends DAO<Abonnement>{
 	ObservableList<Abonnement> getAll();
 
 	ObservableList<Abonnement> getEnCours();
+
+	ObservableList<Abonnement> getAllByClient();
+
+	ObservableList<Abonnement> getAllByRevue();
 	
 }

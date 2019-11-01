@@ -157,11 +157,29 @@ public class AjoutAboCtrl {
 	}
 	
 	public void triParClient(){
+		id_table.getItems().clear();
+		//on prépare les colonnes
+		id_col_client.setCellValueFactory(new PropertyValueFactory<>("idClient"));
+		id_col_revue.setCellValueFactory(new PropertyValueFactory<>("idRevue"));
+		id_col_date_deb.setCellValueFactory(new PropertyValueFactory<>("dateDebut"));
+		id_col_date_fin.setCellValueFactory(new PropertyValueFactory<>("dateFin"));
+		MySQLAbonnementDAO c = MySQLAbonnementDAO.getInstance();
+		ObservableList test = c.getAllByClient();
+		id_table.getItems().addAll(test);
+
 		
 	}
 	
 	public void triParRevue(){
-		
+		id_table.getItems().clear();
+		//on prépare les colonnes
+		id_col_client.setCellValueFactory(new PropertyValueFactory<>("idClient"));
+		id_col_revue.setCellValueFactory(new PropertyValueFactory<>("idRevue"));
+		id_col_date_deb.setCellValueFactory(new PropertyValueFactory<>("dateDebut"));
+		id_col_date_fin.setCellValueFactory(new PropertyValueFactory<>("dateFin"));
+		MySQLAbonnementDAO c = MySQLAbonnementDAO.getInstance();
+		ObservableList test = c.getAllByRevue();
+		id_table.getItems().addAll(test);
 	}
 
 	}

@@ -134,5 +134,21 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO{
 
 
 
+	@Override
+	public ObservableList<Abonnement> getAllByClient() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public ObservableList<Abonnement> getAllByRevue() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 }
 
