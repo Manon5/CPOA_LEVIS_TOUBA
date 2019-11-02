@@ -54,13 +54,14 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 	public boolean update(Abonnement a) {
 		Connection laCo = Connexion.createConnexion();
 		try {
-			PreparedStatement requete = laCo.prepareStatement("update Abonnement(date_debut = ?, date_fin = ? WHERE id_client = ? AND id_revue = ?");
-			requete.setInt(3, a.getIdClient());
-			requete.setInt(4, a.getIdRevue());
+			PreparedStatement requete = laCo.prepareStatement("update Abonnement set date_debut = ?, date_fin = ? WHERE id_client = ? AND id_revue = ?");
 			requete.setDate(1, java.sql.Date.valueOf(a.getDateDebut()));
 			requete.setDate(2, java.sql.Date.valueOf(a.getDateFin()));
+			requete.setInt(3, a.getIdClient());
+			requete.setInt(4, a.getIdRevue());
 			requete.executeUpdate();
 			laCo.close();
+			System.out.println(a.getDateDebut());
 			return true;
 		}catch(SQLException e){
 			System.out.println("Pb select" + e.getMessage());

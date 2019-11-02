@@ -135,7 +135,7 @@ public class AjoutAboCtrl {
 			Revue  rev = id_cb_revue.getSelectionModel().getSelectedItem();
 			
 			MySQLAbonnementDAO r = MySQLAbonnementDAO.getInstance();
-			Abonnement Abo = new Abonnement(cli.getId(), rev.getId(), dateDeb, dateFin);
+			Abonnement Abo = new Abonnement(rev.getId(),cli.getId(),  dateDeb, dateFin);
 			r.create(Abo);
 			// message de confirmation
 			id_lb_custom.setTextFill(Color.BLACK);
@@ -231,6 +231,8 @@ public class AjoutAboCtrl {
 			id_cb_client.getSelectionModel().select(i.getById(a.getIdClient()));
 			MySQLRevueDAO o = MySQLRevueDAO.getInstance();
 			id_cb_revue.getSelectionModel().select(o.getById(a.getIdRevue()));
+			
+			System.out.println("Test :" + i.getById(a.getIdClient()).toString());
 
 			id_dp_debut.setValue(a.getDateDebut());
 			id_dp_fin.setValue(a.getDateFin());
@@ -264,11 +266,11 @@ public class AjoutAboCtrl {
 			Revue  rev = id_cb_revue.getSelectionModel().getSelectedItem();
 			
 			MySQLAbonnementDAO r = MySQLAbonnementDAO.getInstance();
-			Abonnement Abo = new Abonnement(cli.getId(), rev.getId(), dateDeb, dateFin);
+			Abonnement Abo = new Abonnement(rev.getId(), cli.getId(), dateDeb, dateFin);
 			r.update(Abo);
 			// message de confirmation
 			id_lb_custom.setTextFill(Color.BLACK);
-			id_lb_custom.setText("Abonnement modifié la Bdd ");
+			id_lb_custom.setText("Abonnement modifié dans la Bdd ");
 		}
 		remplirTable();
 		setModeAjout();

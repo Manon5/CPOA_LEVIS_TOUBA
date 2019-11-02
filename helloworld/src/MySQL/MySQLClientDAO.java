@@ -105,7 +105,6 @@ public class MySQLClientDAO implements ClientDAO{
 			PreparedStatement requete = laCo.prepareStatement("SELECT * FROM Client WHERE id_client = ?");
 			requete.setInt(1, id);
 			ResultSet res = requete.executeQuery();
-			laCo.close();
 			Client c = new Client();
 			c.setId(id);
 			if(res.next()) {

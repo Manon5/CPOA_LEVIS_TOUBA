@@ -102,7 +102,6 @@ public class MySQLRevueDAO implements RevueDAO{
 			PreparedStatement requete = laCo.prepareStatement("SELECT * FROM Revue WHERE id_revue = ?");
 			requete.setInt(1, id);
 			ResultSet res = requete.executeQuery();
-			laCo.close();
 			Revue r = new Revue();
 			r.setId(id);
 			if(res.next()) {
