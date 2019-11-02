@@ -62,12 +62,13 @@ public class MySQLRevueDAO implements RevueDAO{
 	public boolean update(Revue r) {
 		Connection laCo = Connexion.createConnexion();
 		try {
-			PreparedStatement requete = laCo.prepareStatement("update Revue titre = ?, description = ?, tarif_numero = ?, visuel = ?, id_periodicite = ? WHERE id_revue = ?");
+			PreparedStatement requete = laCo.prepareStatement("update Revue set titre = ?, description = ?, tarif_numero = ?, visuel = ?, id_periodicite = ? WHERE id_revue = ?");
 			requete.setString(1, r.getTitre());
 			requete.setString(2, r.getDesc());
 			requete.setDouble(3, r.getTarif());
 			requete.setString(4, r.getVisuel());
 			requete.setInt(5, r.getIdPeriodicite());
+			requete.setInt(6, r.getId());
 			requete.executeUpdate();
 			laCo.close();
 			return true;

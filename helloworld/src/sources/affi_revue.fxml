@@ -72,7 +72,7 @@
               </rowConstraints>
                <children>
                   <Button alignment="CENTER" mnemonicParsing="false" text="Voir l'élément" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <Button mnemonicParsing="false" text="Modifier" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Button mnemonicParsing="false" onAction="#affiModifRevue" text="Modifier" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                   <Button mnemonicParsing="false" text="Supprimer" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
@@ -111,7 +111,7 @@
                <children>
                   <FlowPane alignment="CENTER" prefHeight="86.0" prefWidth="304.0">
                      <children>
-                        <Label text="Nouvelle revue" />
+                        <Label fx:id="label_revue" text="Nouvelle revue" />
                      </children>
                   </FlowPane>
                   <GridPane prefHeight="275.0" prefWidth="306.0">
@@ -147,7 +147,9 @@
                   </GridPane>
                   <FlowPane alignment="CENTER" prefHeight="84.0" prefWidth="306.0">
                      <children>
+                        <Button fx:id="id_btn_valider" mnemonicParsing="false" onAction="#validerModif" text="Valider" />
                         <Button fx:id="id_btn_creer" mnemonicParsing="false" onAction="#creerRevue" text="Créer" />
+                        <Button fx:id="id_btn_annuler" mnemonicParsing="false" onAction="#annulerModif" text="Annuler" />
                      </children>
                   </FlowPane>
                   <FlowPane alignment="CENTER" prefHeight="75.0" prefWidth="306.0">
@@ -158,7 +160,7 @@
                </children>
             </VBox>
             <Button layoutX="11.0" layoutY="447.0" mnemonicParsing="false" onAction="#retourAccueil" text="Retour à l'accueil" />
-            <Label fx:id="id_error_label" layoutX="639.0" layoutY="447.0" prefHeight="25.0" prefWidth="73.0" />
+            <Label fx:id="id_error_label" alignment="CENTER" contentDisplay="CENTER" layoutX="451.0" layoutY="447.0" prefHeight="25.0" prefWidth="480.0" />
          </children>
     </AnchorPane>
   </children>

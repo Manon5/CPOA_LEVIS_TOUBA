@@ -22,6 +22,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -50,7 +51,14 @@ public class AjoutRevueCtrl{
 	@FXML private TableColumn id_col_period;
 	@FXML private TableColumn id_col_abo;
 	@FXML private TextField id_recherche_tarif;
+	@FXML private Button id_btn_creer;
+	@FXML private Button id_btn_valider;
+	@FXML private Button id_btn_annuler;
+	@FXML private Label label_revue;
+	@FXML private Label id_error_label;
 	
+	
+	private int id_select;
 	
 	private AjoutRevueVue vue;
 	
@@ -64,9 +72,21 @@ public class AjoutRevueCtrl{
 		ObservableList<Periodicite> list = p.getAll(); 
 		id_cb_period.setItems(list);
 		remplirTable();
+		setModeAjout();
 	}
 	
-public void remplirTable() {
+	public void setModeAjout(){
+		id_btn_valider.setVisible(false);
+		id_btn_annuler.setVisible(false);
+		id_btn_creer.setVisible(true);
+		label_revue.setText("Nouvelle revue");
+		id_tf_titre.clear(); 
+		id_tf_desc.clear();
+		id_tf_tarif.clear();
+		id_cb_period.getSelectionModel().select(-1);
+	}
+	
+	public void remplirTable() {
 		
 		id_table.getItems().clear();
 		//on prépare les colonnes
@@ -224,9 +244,87 @@ public void remplirTable() {
 			id_table.getItems().addAll(test);
 		}
 	}
-	
+
 	public void affiModifRevue() {
-		System.out.println("test");
+		
+		// on récupère la sélection
+		ObservableList selection = id_table.getSelectionModel().getSelectedItems();
+		if(selection.size() == 0) {
+			id_error_label.setTextFill(Color.RED);
+			id_error_label.setText("Aucune revue sélectionnée");
+		}else if(selection.size() > 1) {
+			id_error_label.setTextFill(Color.RED);
+			id_error_label.setText("Plusieurs revues sélectionnées");
+		}else {
+			// on prépare l'interface 
+			Revue r = ((Revue) selection.get(0));
+			id_select = r.getId();
+			id_btn_creer.setVisible(false);
+			id_btn_valider.setVisible(true);
+			id_btn_annuler.setVisible(true);
+			label_revue.setText("Modifier la revue n°" + id_select);
+			id_tf_titre.setText(r.getTitre());
+			id_tf_desc.setText(r.getDesc());
+			id_tf_tarif.setText(r.getTarif() + "");
+			MySQLPeriodiciteDAO i = MySQLPeriodiciteDAO.getInstance();
+			id_cb_period.getSelectionModel().select(i.getById(r.getIdPeriodicite()));
+		}
+
+	}
+	
+	public void validerModif() {
+		// on rÃ©cupÃ¨re les champs
+				String titre = id_tf_titre.getText().trim();
+				String desc = id_tf_desc.getText().trim();
+				String tarifT = id_tf_tarif.getText().trim();
+				double tarif;
+				boolean tarifInvalide = false;
+				try {
+					tarif= Double.parseDouble(tarifT);
+				}catch(NumberFormatException e) {
+					tarifInvalide = true;
+				}
+				
+				// on vÃ©rifie que les champs ne sont pas vides
+				if(titre.equals("") || titre == null) {
+					id_lb_custom.setTextFill(Color.RED);
+					id_lb_custom.setText("Veuillez renseigner un titre svp");
+				}else if(desc.equals("") || desc == null) {
+					id_lb_custom.setTextFill(Color.RED);
+					id_lb_custom.setText("Veuillez renseigner la description svp");
+				}else if(tarifT.equals("") || tarifT == null) {
+					id_lb_custom.setTextFill(Color.RED);
+					id_lb_custom.setText("Veuillez renseigner un tarif svp");
+				}else if(id_cb_period.getSelectionModel().getSelectedItem() == null) {
+					id_lb_custom.setTextFill(Color.RED);
+					id_lb_custom.setText("Veuillez choisir la périodicité svp");
+				}else if(tarifInvalide == true) {
+					id_lb_custom.setTextFill(Color.RED);
+					id_lb_custom.setText("Veuillez entrer un tarif correct svp");
+				}else {
+					// tout est correct, on insÃ¨re dans la BdD
+					tarif = Double.parseDouble(tarifT);
+					String period = id_cb_period.getSelectionModel().getSelectedItem().toString();
+					MySQLPeriodiciteDAO p = MySQLPeriodiciteDAO.getInstance();
+					int id = p.getByLibelle(period).get(0).getId();
+					MySQLRevueDAO r = MySQLRevueDAO.getInstance();
+					Revue Rev = new Revue(id_select, titre, desc, tarif, "pas d'image", id);
+					r.update(Rev);
+					// message de confirmation
+					id_lb_custom.setTextFill(Color.BLACK);
+					id_lb_custom.setText("Revue n°" + id_select + " modifiée dans la bdd");
+				}
+				
+				remplirTable();
+	}
+	
+	
+	public void annulerModif() {
+		// message de confirmation
+		id_lb_custom.setTextFill(Color.BLACK);
+		id_lb_custom.setText("Modification annulée");
+		setModeAjout();
+		remplirTable();
 	}
 
 
