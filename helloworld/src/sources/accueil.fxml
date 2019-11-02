@@ -23,7 +23,7 @@
         </Menu>
             <Menu mnemonicParsing="false" text="Persistance">
               <items>
-                  <RadioMenuItem mnemonicParsing="false" text="Mode local (liste mémoire)" />
+                  <RadioMenuItem fx:id="local_mode" mnemonicParsing="false" onAction="#switchPersistance" text="Mode local (liste mémoire)" />
               </items>
             </Menu>
       </menus>

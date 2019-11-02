@@ -6,6 +6,8 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import DAO.Persistance;
+import Factory.DAOFactory;
 import FxVues.*;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -15,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioMenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
@@ -23,8 +26,8 @@ import javafx.scene.control.ToggleGroup;
 
 public class Main extends Application{
 	
-	@FXML
-	private Label id_lb_custom;
+	@FXML private Label id_lb_custom;
+	@FXML private RadioMenuItem local_mode;
 	
 	private Stage st;
 
@@ -41,12 +44,21 @@ public class Main extends Application{
 		primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
-			}
+		}
 		}
 	
+	public void switchPersistance() {
+		//partie persistance
+		if(local_mode.isSelected()) {
+			System.out.println("Mode local activé");	
+			DAOFactory fact = DAOFactory.getDAOfactory(Persistance.LISTE_MEMOIRE);
+		}else {
+			System.out.println("Mode local désactivé");
+			DAOFactory fact = DAOFactory.getDAOfactory(Persistance.MYSQL);
+		}
+	}
+	
 	public void creerModele() {
-		
-		
 		this.id_lb_custom.setText("test");
 	}
 	
