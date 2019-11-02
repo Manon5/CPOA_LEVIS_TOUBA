@@ -224,6 +224,10 @@ public void remplirTable() {
 			id_table.getItems().addAll(test);
 		}
 	}
+	
+	public void affiModifRevue() {
+		System.out.println("test");
+	}
 
 
 

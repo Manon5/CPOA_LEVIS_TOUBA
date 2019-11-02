@@ -17,6 +17,7 @@ import POJO.Revue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -51,6 +52,12 @@ public class AjoutClientCtrl {
 	@FXML private TableColumn id_col_code;
 	@FXML private TableColumn id_col_ville;
 	@FXML private TableColumn id_col_pays;
+	@FXML private Button id_btn_creer;
+	@FXML private Button id_btn_valider;
+	@FXML private Button id_btn_annuler;
+	@FXML private Label label_client;
+	
+	private int id_select;
 	
 	
 	public void setVue(AjoutClientVue V) {
@@ -267,6 +274,77 @@ public class AjoutClientCtrl {
 		
 		
 		
+	}
+	
+	
+	public void affiModifClient() {
+		
+		// on récupère la sélection
+		ObservableList selection = id_table.getSelectionModel().getSelectedItems();
+		if(selection.size() == 0) {
+			//erreur
+		}else if(selection.size() > 1) {
+			//erreur
+		}else {
+			// on prépare l'interface 
+			Client c = ((Client) selection.get(0));
+			id_select = c.getId();
+			id_btn_creer.setVisible(false);
+			id_btn_valider.setVisible(true);
+			id_btn_annuler.setVisible(true);
+			label_client.setText("Modifier le client n°" + id_select);
+			id_tf_nom.setText(c.getNom());
+			id_tf_prenom.setText(c.getPrenom());
+			id_tf_norue.setText(c.getNoRue());
+			id_tf_voie.setText(c.getVoie());
+			id_tf_codepost.setText(c.getCodePostal());
+			id_tf_ville.setText(c.getVille());
+			id_tf_pays.setText(c.getPays());
+		}
+
+	}
+	
+	public void validerModif() {
+		String nom = id_tf_nom.getText().trim();
+		String prenom = id_tf_prenom.getText().trim();
+		String no_rue = id_tf_norue.getText().trim();
+		String voie = id_tf_voie.getText().trim();
+		String code_postal = id_tf_codepost.getText().trim();
+		String ville = id_tf_ville.getText().trim();
+		String pays = id_tf_pays.getText().trim();
+		// on vÃ©rifie que les champs ne sont pas vides
+		if(nom.equals("") || nom == null) {
+			id_lb_custom.setTextFill(Color.RED);
+			id_lb_custom.setText("Veuillez renseigner un nom svp");
+		}else if(prenom.equals("") || prenom == null) {
+			id_lb_custom.setTextFill(Color.RED);
+			id_lb_custom.setText("Veuillez renseigner un prénom svp");
+		}else if(no_rue.equals("") || no_rue == null) {
+			id_lb_custom.setTextFill(Color.RED);
+			id_lb_custom.setText("Veuillez renseigner un numéro de rue svp");
+		}else if(voie.equals("") || voie == null) {
+			id_lb_custom.setTextFill(Color.RED);
+			id_lb_custom.setText("Veuillez renseigner la voie svp");
+		}else if(code_postal.equals("") || code_postal == null) {
+			id_lb_custom.setTextFill(Color.RED);
+			id_lb_custom.setText("Veuillez entrer un code postal correct svp");
+		}else if(ville.equals("") || ville == null) {
+			id_lb_custom.setTextFill(Color.RED);
+			id_lb_custom.setText("Veuillez entrer un nom de ville correct svp");
+		}else if(pays.equals("") || pays == null) {
+			id_lb_custom.setTextFill(Color.RED);
+			id_lb_custom.setText("Veuillez entrer un pays correct svp");
+		}else {
+			MySQLClientDAO c = MySQLClientDAO.getInstance();
+			Client Cli = new Client(id_select, nom, prenom, no_rue, voie, code_postal, ville, pays);
+			c.update(Cli);
+			// message de confirmation
+			id_lb_custom.setTextFill(Color.BLACK);
+			id_lb_custom.setText("Client n°" + id_select + " modifié dans la bdd");
+			label_client.setText("Nouveau client");
+		}
+		
+		remplirTable();
 	}
 	}
 
