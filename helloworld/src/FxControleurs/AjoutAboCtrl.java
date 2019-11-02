@@ -18,6 +18,7 @@ import POJO.Periodicite;
 import POJO.Revue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -45,6 +46,13 @@ public class AjoutAboCtrl {
 	@FXML private TableColumn id_col_date_fin;
 	@FXML private CheckBox id_cb_en_cours;
 	@FXML private Label id_error_label;
+	@FXML private Button id_btn_creer;
+	@FXML private Button id_btn_valider;
+	@FXML private Button id_btn_annuler;
+	@FXML private Label label_abonnement;
+
+	private int id_client;
+	private int id_revue;
 
 	public void setVue(AjoutAboVue V) {
 		vue = V;
@@ -58,6 +66,20 @@ public class AjoutAboCtrl {
 		id_cb_revue.setItems(list2);
 		
 		remplirTable();
+		setModeAjout();
+	}
+	
+	public void setModeAjout(){
+		id_btn_valider.setVisible(false);
+		id_btn_annuler.setVisible(false);
+		id_btn_creer.setVisible(true);
+		label_abonnement.setText("Nouvel abonnement");
+		id_cb_client.getSelectionModel().select(-1);
+		id_cb_revue.getSelectionModel().select(-1);
+		id_dp_debut.setValue(null);
+		id_cb_client.setDisable(false);
+		id_cb_revue.setDisable(false);
+		id_dp_fin.setValue(null);
 	}
 	
 	public void remplirTable() {
@@ -180,6 +202,85 @@ public class AjoutAboCtrl {
 		MySQLAbonnementDAO c = MySQLAbonnementDAO.getInstance();
 		ObservableList test = c.getAllByRevue();
 		id_table.getItems().addAll(test);
+	}
+	
+	
+	public void affiModifAbo() {
+		
+		// on récupère la sélection
+		ObservableList selection = id_table.getSelectionModel().getSelectedItems();
+		if(selection.size() == 0) {
+			id_error_label.setTextFill(Color.RED);
+			id_error_label.setText("Aucun abonnement sélectionné");
+		}else if(selection.size() > 1) {
+			id_error_label.setTextFill(Color.RED);
+			id_error_label.setText("Plusieurs abonnements sélectionnés");
+		}else {
+			// on prépare l'interface 
+			Abonnement a = ((Abonnement) selection.get(0));
+			id_client = a.getIdClient();
+			id_revue = a.getIdRevue();
+			id_cb_client.setDisable(true);
+			id_cb_revue.setDisable(true);
+			id_btn_creer.setVisible(false);
+			id_btn_valider.setVisible(true);
+			id_btn_annuler.setVisible(true);
+			label_abonnement.setText("Modifier l'abonnement du client" + id_client + " à la revue " + id_revue);
+
+			MySQLClientDAO i = MySQLClientDAO.getInstance();
+			id_cb_client.getSelectionModel().select(i.getById(a.getIdClient()));
+			MySQLRevueDAO o = MySQLRevueDAO.getInstance();
+			id_cb_revue.getSelectionModel().select(o.getById(a.getIdRevue()));
+
+			id_dp_debut.setValue(a.getDateDebut());
+			id_dp_fin.setValue(a.getDateFin());
+		}
+
+	}
+	
+
+	public void validerModif() {
+		LocalDate dateDeb = id_dp_debut.getValue();
+		LocalDate dateFin = id_dp_fin.getValue();
+		
+		if(dateDeb == null) {
+			id_lb_custom.setTextFill(Color.RED);
+			id_lb_custom.setText("Veuillez renseigner une date de début svp");
+		}else if(dateFin == null) {
+			id_lb_custom.setTextFill(Color.RED);
+			id_lb_custom.setText("Veuillez renseigner une date de fin svp");
+		}else if(id_cb_client.getSelectionModel().getSelectedItem() == null) {
+			id_lb_custom.setTextFill(Color.RED);
+			id_lb_custom.setText("Veuillez choisir un client svp");
+		}else if(id_cb_revue.getSelectionModel().getSelectedItem() == null) {
+			id_lb_custom.setTextFill(Color.RED);
+			id_lb_custom.setText("Veuillez choisir une revue svp");
+		}else if(dateFin.isBefore(dateDeb)) {
+			id_lb_custom.setTextFill(Color.RED);
+			id_lb_custom.setText("La date de fin est supérieure à la date de début");
+		}else {
+			// tout est correct, on insère dans la BdD
+			Client  cli = id_cb_client.getSelectionModel().getSelectedItem();
+			Revue  rev = id_cb_revue.getSelectionModel().getSelectedItem();
+			
+			MySQLAbonnementDAO r = MySQLAbonnementDAO.getInstance();
+			Abonnement Abo = new Abonnement(cli.getId(), rev.getId(), dateDeb, dateFin);
+			r.update(Abo);
+			// message de confirmation
+			id_lb_custom.setTextFill(Color.BLACK);
+			id_lb_custom.setText("Abonnement modifié la Bdd ");
+		}
+		remplirTable();
+		setModeAjout();
+	}
+	
+	
+	public void annulerModif() {
+		// message de confirmation
+		id_lb_custom.setTextFill(Color.BLACK);
+		id_lb_custom.setText("Modification annulée");
+		setModeAjout();
+		remplirTable();
 	}
 
 	}

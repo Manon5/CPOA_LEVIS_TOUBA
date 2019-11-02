@@ -68,7 +68,7 @@
               </rowConstraints>
                <children>
                   <Button alignment="CENTER" mnemonicParsing="false" text="Voir l'élément" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <Button mnemonicParsing="false" text="Modifier" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Button mnemonicParsing="false" onAction="#affiModifAbo" text="Modifier" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                   <Button mnemonicParsing="false" text="Supprimer" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
@@ -109,7 +109,7 @@
                <children>
                   <FlowPane alignment="CENTER" prefHeight="72.0" prefWidth="322.0">
                      <children>
-                        <Label alignment="CENTER" text="Nouvel abonnement" />
+                        <Label fx:id="label_abonnement" alignment="CENTER" text="Nouvel abonnement" />
                      </children>
                   </FlowPane>
                   <GridPane prefHeight="242.0" prefWidth="322.0">
@@ -137,7 +137,9 @@
                   </GridPane>
                   <FlowPane alignment="CENTER" prefHeight="86.0" prefWidth="322.0">
                      <children>
+                        <Button fx:id="id_btn_valider" mnemonicParsing="false" onAction="#validerModif" text="Valider" />
                         <Button fx:id="id_btn_creer" mnemonicParsing="false" onAction="#creerAbo" text="Créer" />
+                        <Button fx:id="id_btn_annuler" mnemonicParsing="false" onAction="#annulerModif" text="Annuler" />
                      </children>
                   </FlowPane>
                   <FlowPane alignment="CENTER" prefHeight="77.0" prefWidth="322.0">
