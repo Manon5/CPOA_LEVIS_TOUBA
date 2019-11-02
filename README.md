@@ -1,14 +1,39 @@
 # CPOA_LEVIS_TOUBA
-Un projet super sympa
-//////////////////////////////////////////////////////////
-To do all:
-- afficher les données de la base
-  -ajout boutons modifier et supprimer (données de la base)
-  - panneau modifier/voir
-  - faire tri et recherche
- - bouton pour voir toute la table
-- faire la suppression (+verifs)
-- faire la modif (sur le même panneau que ajout ?)
-- Switch entre SQL et liste mémoire
-- accueil fonctionnel
-//////////////////////////////////////////////////////////
+
+Ce qui fonctionne :
+
+- Page d'accueil et navigation
+- Affichage des éléments dans les tables
+- Ajout d'un élément
+- Modification d'un élément
+- Recherches
+- Tris
+- Voir seulement les abonnements en cours
+- Accès à la BDD via MySQL
+
+Ce qui ne fonctionne pas :
+
+- passage du mode MySQL au mode ListeMémoire
+- Suppression d'un élément
+- Accès à la BDD via Liste Mémoire
+- Affichage du nombre d'abonnements pour chaque revue
+- Affichage du nom/prénom du client au lieu de l'id
+
+Répartition des tâches :
+
+- Mise en place de la méthode DAO et requetes SQL : Lucas et Manon
+- Mise en place de la méthode Liste Mémoire : Lucas et Manon
+- Tests : Lucas et Manon
+
+- Page d'accueil : Manon
+- Affichage des éléments, ajout et suppression : Manon
+- Recherches et tris : Manon
+- Affichage des abonnements en cours : Manon
+- Réalisation des interfaces graphiques : Manon
+
+- Suppression d'un élément : Lucas
+
+Pourcentage d'investissement : 
+
+- Lucas : ??
+- Manon : ??
