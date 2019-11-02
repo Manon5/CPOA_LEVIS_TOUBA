@@ -63,6 +63,23 @@ public class AjoutClientCtrl {
 	public void setVue(AjoutClientVue V) {
 		vue = V;
 		remplirTable();
+		setModeAjout();
+	}
+	
+	public void setModeAjout(){
+
+		id_btn_valider.setVisible(false);
+		id_btn_annuler.setVisible(false);
+		id_btn_creer.setVisible(true);
+		label_client.setText("Nouveau client");
+		id_tf_nom.clear();
+		id_tf_prenom.clear();
+		id_tf_norue.clear();
+		id_tf_voie.clear();
+		id_tf_codepost.clear();
+		id_tf_ville.clear();
+		id_tf_pays.clear();
+		
 	}
 	
 	public void remplirTable() {
@@ -282,9 +299,11 @@ public class AjoutClientCtrl {
 		// on récupère la sélection
 		ObservableList selection = id_table.getSelectionModel().getSelectedItems();
 		if(selection.size() == 0) {
-			//erreur
+			id_error_label.setTextFill(Color.RED);
+			id_error_label.setText("Aucun client sélectionné");
 		}else if(selection.size() > 1) {
-			//erreur
+			id_error_label.setTextFill(Color.RED);
+			id_error_label.setText("Plusieurs clients sélectionnés");
 		}else {
 			// on prépare l'interface 
 			Client c = ((Client) selection.get(0));
@@ -341,9 +360,18 @@ public class AjoutClientCtrl {
 			// message de confirmation
 			id_lb_custom.setTextFill(Color.BLACK);
 			id_lb_custom.setText("Client n°" + id_select + " modifié dans la bdd");
-			label_client.setText("Nouveau client");
+			setModeAjout();
 		}
 		
+		remplirTable();
+	}
+	
+	
+	public void annulerModif() {
+		// message de confirmation
+		id_lb_custom.setTextFill(Color.BLACK);
+		id_lb_custom.setText("Modification annulée");
+		setModeAjout();
 		remplirTable();
 	}
 	}
