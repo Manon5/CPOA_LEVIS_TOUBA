@@ -64,7 +64,7 @@
               </rowConstraints>
                <children>
                   <Button alignment="CENTER" mnemonicParsing="false" text="Voir l'élément" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <Button mnemonicParsing="false" text="Modifier" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Button mnemonicParsing="false" onAction="#affiModifPeriod" text="Modifier" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                   <Button mnemonicParsing="false" text="Supprimer" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
@@ -89,7 +89,7 @@
                <children>
                   <FlowPane alignment="CENTER" prefHeight="89.0" prefWidth="294.0">
                      <children>
-                        <Label text="Nouvelle périodicité" />
+                        <Label fx:id="label_periodicite" text="Nouvelle périodicité" />
                      </children>
                   </FlowPane>
                   <GridPane prefHeight="231.0" prefWidth="294.0">
@@ -108,7 +108,9 @@
                   </GridPane>
                   <FlowPane alignment="CENTER" prefHeight="92.0" prefWidth="294.0">
                      <children>
+                        <Button fx:id="id_btn_valider" mnemonicParsing="false" onAction="#validerModif" text="Valider" />
                         <Button fx:id="id_btn_creer" mnemonicParsing="false" onAction="#creerPeriod" text="Créer" />
+                        <Button fx:id="id_btn_annuler" mnemonicParsing="false" onAction="#annulerModif" text="Annuler" />
                      </children>
                   </FlowPane>
                   <FlowPane alignment="CENTER" prefHeight="128.0" prefWidth="294.0">

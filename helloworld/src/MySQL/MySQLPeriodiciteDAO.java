@@ -56,7 +56,7 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 	public boolean update(Periodicite p) {
 		Connection laCo = Connexion.createConnexion();
 		try {
-			PreparedStatement requete = laCo.prepareStatement("update Periodicite libelle = ? WHERE id_periodicite = ?");
+			PreparedStatement requete = laCo.prepareStatement("update Periodicite set libelle = ? WHERE id_periodicite = ?");
 			requete.setInt(2, p.getId());
 			requete.setString(1, p.getLibelle());
 			requete.executeUpdate();

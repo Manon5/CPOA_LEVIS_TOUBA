@@ -316,6 +316,7 @@ public class AjoutRevueCtrl{
 				}
 				
 				remplirTable();
+				setModeAjout();
 	}
 	
 	
