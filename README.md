@@ -16,6 +16,8 @@ Ce qui ne fonctionne pas :
 - passage du mode MySQL au mode ListeMémoire
 - Suppression d'un élément
 - Accès à la BDD via Liste Mémoire
+- Affichage du nombre d'abonnements pour chaque revue
+- Affichage du nom/prénom du client au lieu de l'id
 
 Répartition des tâches :
 
