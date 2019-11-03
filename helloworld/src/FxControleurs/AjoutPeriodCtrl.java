@@ -1,5 +1,6 @@
 package FxControleurs;
 
+import DAO.AbonnementDAO;
 import DAO.PeriodiciteDAO;
 import DAO.Persistance;
 import Factory.DAOFactory;
@@ -8,6 +9,7 @@ import FxVues.AjoutRevueVue;
 import Liste_Memoire.ListeMemoirePeriodiciteDAO;
 import MySQL.MySQLPeriodiciteDAO;
 import MySQL.MySQLRevueDAO;
+import POJO.Abonnement;
 import POJO.Periodicite;
 import POJO.Revue;
 import javafx.collections.ObservableList;
@@ -181,7 +183,9 @@ public class AjoutPeriodCtrl {
 					id_error_label.setText("Plusieurs revues sélectionnées");
 				}else {
 					//on supprime la ligne sélectionnée de la vue (fonctionne)
-					id_table.getItems().removeAll(selection);
+					/*PeriodiciteDAO p = DAOFactory.getDAOfactory(p).getPeriodiciteDAO();
+					p.delete((Periodicite)selection.get(0));*/
 				}
+				remplirTable();
 	}
 }

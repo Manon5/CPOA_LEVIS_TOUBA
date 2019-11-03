@@ -8,11 +8,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import DAO.AbonnementDAO;
 import DAO.PeriodiciteDAO;
+import DAO.RevueDAO;
+import Factory.DAOFactory;
 import FxVues.AjoutRevueVue;
 import MySQL.MySQLClientDAO;
 import MySQL.MySQLPeriodiciteDAO;
 import MySQL.MySQLRevueDAO;
+import POJO.Abonnement;
 import POJO.Client;
 import POJO.Periodicite;
 import POJO.Revue;
@@ -341,19 +345,11 @@ public class AjoutRevueCtrl{
 			id_error_label.setTextFill(Color.RED);
 			id_error_label.setText("Plusieurs revues sélectionnées");
 		}else {
-			Connection laCo = Connexion.createConnexion();
-			try {
-				//on supprime la ligne sélectionnée de la vue (fonctionne)
-				id_table.getItems().removeAll(selection);
 				//on supprime la ligne de la bdd (ne retire pas la ligne de la bdd)
-				PreparedStatement rq;
-				rq = laCo.prepareStatement("DELETE FROM Revue WHERE id_revue='"+selection+"'");
-				rq.executeUpdate();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			/*RevueDAO r = DAOFactory.getDAOfactory(p).getRevueDAO();
+			r.delete((Revue)selection.get(0));*/
 		}
+		remplirTable();
 	}
 
 }
