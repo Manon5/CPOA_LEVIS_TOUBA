@@ -182,7 +182,8 @@ public class AjoutPeriodCtrl {
 					id_error_label.setTextFill(Color.RED);
 					id_error_label.setText("Plusieurs revues sélectionnées");
 				}else {
-					//on supprime la ligne sélectionnée de la vue (fonctionne)
+					//on supprime la ligne sélectionnée de la vue et de la bdd
+					//utilisation de la méthode delete située dans RequetesSQL
 					PeriodiciteDAO r = DAOFactory.getDAOfactory(p).getPeriodiciteDAO();
 					r.delete((Periodicite)selection.get(0));
 				}

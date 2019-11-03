@@ -348,7 +348,8 @@ public class AjoutRevueCtrl{
 			id_error_label.setTextFill(Color.RED);
 			id_error_label.setText("Plusieurs revues sélectionnées");
 		}else {
-			//on supprime la ligne de la bdd (ne retire pas la ligne de la bdd)
+			//on supprime la ligne de la bdd et de la vue
+			//utilisation de la méthode delete située dans RequetesSQL
 			RevueDAO r = DAOFactory.getDAOfactory(p).getRevueDAO();
 			r.delete((Revue)selection.get(0));
 		}
