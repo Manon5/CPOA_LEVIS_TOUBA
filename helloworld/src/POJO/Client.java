@@ -95,4 +95,13 @@ public class Client {
 	public String toString() {
 		return this.nom + " " +this.prenom ;
 	}
+	
+	public boolean equals(Object cli) {
+		Client a = (Client)cli;
+		if(a.getId() != this.getId()) {
+			return false;
+		}else{
+			return true;
+		}
+	}
 }

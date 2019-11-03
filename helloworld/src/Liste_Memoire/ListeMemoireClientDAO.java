@@ -4,17 +4,18 @@ import java.util.List;
 
 import DAO.*;
 import POJO.Client;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class ListeMemoireClientDAO implements ClientDAO {
 
 	private static ListeMemoireClientDAO instance;
-	private List<Client> donnees;
+	private ObservableList<Client> donnees;
 	
 	
 	private ListeMemoireClientDAO() {
-		this.donnees = new ArrayList<Client>();
-		this.donnees.add(new Client(1, "Lucas", "LEVIS", "14", "Rue des mongoles", "57000", "Metz", "France"));
+		this.donnees = FXCollections.observableArrayList();
+		this.donnees.add(new Client(1, "Lucas", "LEVIS", "14", "Rue de la cathédrale", "57000", "Metz", "France"));
 	}
 	
 	
@@ -92,8 +93,7 @@ public class ListeMemoireClientDAO implements ClientDAO {
 
 	@Override
 	public ObservableList<Client> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.donnees;
 	}
 
 }

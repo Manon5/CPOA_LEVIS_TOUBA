@@ -1,4 +1,6 @@
 package DAO;
+import java.time.LocalDate;
+
 import POJO.*;
 import javafx.collections.ObservableList;
 
@@ -13,5 +15,7 @@ public interface AbonnementDAO extends DAO<Abonnement>{
 	ObservableList<Abonnement> getAllByClient();
 
 	ObservableList<Abonnement> getAllByRevue();
+
+	public abstract ObservableList getByDateDebut(LocalDate date);
 	
 }

@@ -2,6 +2,7 @@ package FxVues;
 
 import java.net.URL;
 
+import DAO.Persistance;
 import FxControleurs.AjoutClientCtrl;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,7 +13,7 @@ import javafx.stage.Stage;
 public class AjoutClientVue extends Stage{
 	
 	
-	public AjoutClientVue() {
+	public AjoutClientVue(Persistance p) {
 		try {
 			final URL fxmlURL= getClass().getResource("/sources/affi_client.fxml");
 	        this.setTitle("Saisir un client");

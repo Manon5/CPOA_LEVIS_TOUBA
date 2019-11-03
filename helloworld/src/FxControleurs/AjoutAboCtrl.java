@@ -7,6 +7,11 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import DAO.AbonnementDAO;
+import DAO.ClientDAO;
+import DAO.Persistance;
+import DAO.RevueDAO;
+import Factory.DAOFactory;
 import FxVues.AjoutAboVue;
 import MySQL.MySQLAbonnementDAO;
 import MySQL.MySQLClientDAO;
@@ -53,14 +58,16 @@ public class AjoutAboCtrl {
 
 	private int id_client;
 	private int id_revue;
+	private Persistance p;
 
-	public void setVue(AjoutAboVue V) {
+	public void setVue(AjoutAboVue V, Persistance pr) {
 		vue = V;
+		p = pr;
 		// remplissage combobox
-		MySQLClientDAO p = MySQLClientDAO.getInstance();
+		ClientDAO c =  DAOFactory.getDAOfactory(p).getClientDAO();
 		ObservableList<Client> list = p.getAll(); 
 		id_cb_client.setItems(list);
-		MySQLRevueDAO r = MySQLRevueDAO.getInstance();
+		RevueDAO r = DAOFactory.getDAOfactory(p).getRevueDAO();
 		ObservableList<Revue> list2 = r.getAll(); 
 		System.out.println(list2.toString());
 		id_cb_revue.setItems(list2);
@@ -92,11 +99,11 @@ public class AjoutAboCtrl {
 		id_col_date_fin.setCellValueFactory(new PropertyValueFactory<>("dateFin"));
 		
 		if(id_cb_en_cours.isSelected()) {
-			MySQLAbonnementDAO c = MySQLAbonnementDAO.getInstance();
+			AbonnementDAO c = DAOFactory.getDAOfactory(p).getAbonnementDAO();
 			ObservableList test = c.getEnCours();
 			id_table.getItems().addAll(test);
 		}else {
-			MySQLAbonnementDAO c = MySQLAbonnementDAO.getInstance();
+			AbonnementDAO c = DAOFactory.getDAOfactory(p).getAbonnementDAO();
 			ObservableList test = c.getAll();
 			id_table.getItems().addAll(test);
 		}
@@ -134,7 +141,7 @@ public class AjoutAboCtrl {
 			Client  cli = id_cb_client.getSelectionModel().getSelectedItem();
 			Revue  rev = id_cb_revue.getSelectionModel().getSelectedItem();
 			
-			MySQLAbonnementDAO r = MySQLAbonnementDAO.getInstance();
+			AbonnementDAO r = DAOFactory.getDAOfactory(p).getAbonnementDAO();
 			Abonnement Abo = new Abonnement(rev.getId(),cli.getId(),  dateDeb, dateFin);
 			r.create(Abo);
 			// message de confirmation
@@ -160,7 +167,7 @@ public class AjoutAboCtrl {
 			id_col_date_deb.setCellValueFactory(new PropertyValueFactory<>("dateDebut"));
 			id_col_date_fin.setCellValueFactory(new PropertyValueFactory<>("dateFin"));
 
-			MySQLAbonnementDAO c = MySQLAbonnementDAO.getInstance();
+			AbonnementDAO c = DAOFactory.getDAOfactory(p).getAbonnementDAO();
 			ObservableList test = c.getByDateDebut(date);
 			
 			//si aucun résultat
@@ -185,7 +192,7 @@ public class AjoutAboCtrl {
 		id_col_revue.setCellValueFactory(new PropertyValueFactory<>("nomRevue"));
 		id_col_date_deb.setCellValueFactory(new PropertyValueFactory<>("dateDebut"));
 		id_col_date_fin.setCellValueFactory(new PropertyValueFactory<>("dateFin"));
-		MySQLAbonnementDAO c = MySQLAbonnementDAO.getInstance();
+		AbonnementDAO c = DAOFactory.getDAOfactory(p).getAbonnementDAO();		
 		ObservableList test = c.getAllByClient();
 		id_table.getItems().addAll(test);
 
@@ -199,7 +206,7 @@ public class AjoutAboCtrl {
 		id_col_revue.setCellValueFactory(new PropertyValueFactory<>("nomRevue"));
 		id_col_date_deb.setCellValueFactory(new PropertyValueFactory<>("dateDebut"));
 		id_col_date_fin.setCellValueFactory(new PropertyValueFactory<>("dateFin"));
-		MySQLAbonnementDAO c = MySQLAbonnementDAO.getInstance();
+		AbonnementDAO c = DAOFactory.getDAOfactory(p).getAbonnementDAO();
 		ObservableList test = c.getAllByRevue();
 		id_table.getItems().addAll(test);
 	}
@@ -227,9 +234,9 @@ public class AjoutAboCtrl {
 			id_btn_annuler.setVisible(true);
 			label_abonnement.setText("Modifier l'abonnement du client" + id_client + " à la revue " + id_revue);
 
-			MySQLClientDAO i = MySQLClientDAO.getInstance();
+			ClientDAO i = DAOFactory.getDAOfactory(p).getClientDAO();
 			id_cb_client.getSelectionModel().select(i.getById(a.getIdClient()));
-			MySQLRevueDAO o = MySQLRevueDAO.getInstance();
+			RevueDAO o = DAOFactory.getDAOfactory(p).getRevueDAO();
 			id_cb_revue.getSelectionModel().select(o.getById(a.getIdRevue()));
 			
 			System.out.println("Test :" + i.getById(a.getIdClient()).toString());
@@ -265,7 +272,7 @@ public class AjoutAboCtrl {
 			Client  cli = id_cb_client.getSelectionModel().getSelectedItem();
 			Revue  rev = id_cb_revue.getSelectionModel().getSelectedItem();
 			
-			MySQLAbonnementDAO r = MySQLAbonnementDAO.getInstance();
+			AbonnementDAO r = DAOFactory.getDAOfactory(p).getAbonnementDAO();
 			Abonnement Abo = new Abonnement(rev.getId(), cli.getId(), dateDeb, dateFin);
 			r.update(Abo);
 			// message de confirmation

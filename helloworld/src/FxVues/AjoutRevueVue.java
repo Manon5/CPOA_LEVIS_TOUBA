@@ -2,6 +2,7 @@ package FxVues;
 	
 import java.net.URL;
 
+import DAO.Persistance;
 import FxControleurs.AjoutRevueCtrl;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Modality;
@@ -12,7 +13,7 @@ import javafx.scene.layout.VBox;
 public class AjoutRevueVue extends Stage {
 	
 	
-	public AjoutRevueVue() {
+	public AjoutRevueVue(Persistance p) {
 		try {
 			final URL fxmlURL= getClass().getResource("/sources/affi_revue.fxml");
 	        this.setTitle("Saisir une revue");
