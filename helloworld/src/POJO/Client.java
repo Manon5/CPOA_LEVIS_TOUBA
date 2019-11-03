@@ -13,6 +13,7 @@ public class Client {
 	
 	public Client(int id_client, String nom, String prenom, String no_rue, String voie, String code_postal, String ville, String pays) {
 		this.setId(id_client);
+		System.out.println(id_client);
 		this.setNom(nom);
 		this.setPrenom(prenom);
 		this.setNoRue(no_rue);

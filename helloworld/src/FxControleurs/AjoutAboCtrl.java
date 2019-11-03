@@ -65,12 +65,11 @@ public class AjoutAboCtrl {
 		p = pr;
 		// remplissage combobox
 		ClientDAO c =  DAOFactory.getDAOfactory(p).getClientDAO();
-		ObservableList<Client> list = p.getAll(); 
+		ObservableList<Client> list = c.getAll(); 
 		//System.out.println(list.toString());
 		id_cb_client.setItems(list);
 		RevueDAO r = DAOFactory.getDAOfactory(p).getRevueDAO();
 		ObservableList<Revue> list2 = r.getAll(); 
-		System.out.println(list2.toString());
 		id_cb_revue.setItems(list2);
 		
 		remplirTable();
@@ -140,11 +139,14 @@ public class AjoutAboCtrl {
 		}else {
 			// tout est correct, on insère dans la BdD
 			Client  cli = id_cb_client.getSelectionModel().getSelectedItem();
+			System.out.println("Client : ");
+			System.out.println(cli.toString());
+			System.out.println(cli.getId());
 			Revue  rev = id_cb_revue.getSelectionModel().getSelectedItem();
 			
-			AbonnementDAO r = DAOFactory.getDAOfactory(p).getAbonnementDAO();
-			Abonnement Abo = new Abonnement(rev.getId(),cli.getId(),  dateDeb, dateFin);
-			r.create(Abo);
+			//AbonnementDAO r = DAOFactory.getDAOfactory(p).getAbonnementDAO();
+			//Abonnement Abo = new Abonnement(rev.getId(),cli.getId(),  dateDeb, dateFin);
+			//r.create(Abo);
 			// message de confirmation
 			id_lb_custom.setTextFill(Color.BLACK);
 			id_lb_custom.setText("Abonnement ajouté à la Bdd ");
