@@ -10,10 +10,10 @@ Ce qui fonctionne :
 - Tris
 - Voir seulement les abonnements en cours
 - Accès à la BDD via MySQL
+- passage du mode MySQL au mode ListeMémoire
 
 Ce qui ne fonctionne pas :
 
-- passage du mode MySQL au mode ListeMémoire
 - Suppression d'un élément
 - Accès à la BDD via Liste Mémoire
 - Affichage du nombre d'abonnements pour chaque revue
