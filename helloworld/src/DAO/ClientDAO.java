@@ -9,6 +9,15 @@ public interface ClientDAO extends DAO<Client>{
 
 	public abstract Client getById(int id);
 	public ObservableList<Client> getAll();
+
+
+	ObservableList<Client> OrderByNom();
+
+
+	ObservableList<Client> getByNomPrenom(String nom, String prenom);
+
+
+	ObservableList<Client> getByVille(String v);
 	
 }
 

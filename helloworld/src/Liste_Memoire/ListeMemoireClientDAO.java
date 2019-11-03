@@ -97,4 +97,39 @@ public class ListeMemoireClientDAO implements ClientDAO {
 		return this.donnees;
 	}
 
+
+
+	@Override
+	public ObservableList<Client> OrderByNom() {
+		return this.donnees;
+	}
+
+
+
+	@Override
+	public ObservableList<Client> getByNomPrenom(String nom, String prenom) {
+		ObservableList res = FXCollections.observableArrayList();
+		int i = 0;
+		while(i < donnees.size()) {
+			if(donnees.get(i).getNom() == nom && donnees.get(i).getPrenom() == prenom) {
+				res.add(donnees.get(i));
+			}
+		}
+		return res;
+	}
+
+
+
+	@Override
+	public ObservableList<Client> getByVille(String v) {
+		ObservableList res = FXCollections.observableArrayList();
+		int i = 0;
+		while(i < donnees.size()) {
+			if(donnees.get(i).getVille() == v) {
+				res.add(donnees.get(i));
+			}
+		}
+		return res;
+	}
+
 }

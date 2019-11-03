@@ -29,6 +29,7 @@ public class MySQLClientDAO implements ClientDAO{
 		return instance;
 	}
 	
+	@Override
 	public ObservableList<Client> OrderByNom(){
 		Connection laCo = Connexion.createConnexion();
 
@@ -149,6 +150,7 @@ public class MySQLClientDAO implements ClientDAO{
 		}
 	}
 	
+	@Override
 	public ObservableList<Client> getByNomPrenom(String nom, String prenom){
 		Connection laCo = Connexion.createConnexion();
 		try {
@@ -236,7 +238,7 @@ public class MySQLClientDAO implements ClientDAO{
 		}
 	}
 	
-	
+	@Override
 	public ObservableList<Client> getByVille(String v){
 		Connection laCo = Connexion.createConnexion();
 		try {
