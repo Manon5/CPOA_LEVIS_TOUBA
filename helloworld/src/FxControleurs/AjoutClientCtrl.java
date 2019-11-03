@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import com.mysql.cj.xdevapi.Table;
 
 import DAO.ClientDAO;
+import DAO.Persistance;
+import Factory.DAOFactory;
 import FxVues.AjoutClientVue;
 import MySQL.MySQLClientDAO;
 import MySQL.MySQLPeriodiciteDAO;
@@ -58,10 +60,12 @@ public class AjoutClientCtrl {
 	@FXML private Label label_client;
 	
 	private int id_select;
+	private Persistance p;
 	
 	
-	public void setVue(AjoutClientVue V) {
+	public void setVue(AjoutClientVue V, Persistance pr) {
 		vue = V;
+		p = pr;
 		remplirTable();
 		setModeAjout();
 	}
@@ -94,7 +98,7 @@ public class AjoutClientCtrl {
 		id_col_code.setCellValueFactory(new PropertyValueFactory<>("codePostal"));
 		id_col_ville.setCellValueFactory(new PropertyValueFactory<>("ville"));
 		id_col_pays.setCellValueFactory(new PropertyValueFactory<>("pays"));
-		MySQLClientDAO c = MySQLClientDAO.getInstance();
+		ClientDAO c = DAOFactory.getDAOfactory(p).getClientDAO();
 		ObservableList test = c.getAll();
 		id_table.getItems().addAll(test);
 	}
@@ -130,7 +134,7 @@ public class AjoutClientCtrl {
 			id_lb_custom.setTextFill(Color.RED);
 			id_lb_custom.setText("Veuillez entrer un pays correct svp");
 		}else {
-			MySQLClientDAO c = MySQLClientDAO.getInstance();
+			ClientDAO c = DAOFactory.getDAOfactory(p).getClientDAO();
 			Client Cli = new Client(1, nom, prenom, no_rue, voie, code_postal, ville, pays);
 			c.create(Cli);
 			// message de confirmation

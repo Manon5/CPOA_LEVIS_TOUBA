@@ -21,7 +21,7 @@ public class AjoutClientVue extends Stage{
 			final VBox node = (VBox)fxmlLoader.load();
 	        this.setScene(new Scene(node, 1307, 519));
 	        AjoutClientCtrl controleur = fxmlLoader.getController();
-	        controleur.setVue(this);
+	        controleur.setVue(this, p);
 			this.initModality(Modality.APPLICATION_MODAL);
 	        this.show();
 		}catch(Exception e){
