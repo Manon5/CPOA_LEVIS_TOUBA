@@ -1,5 +1,7 @@
 package POJO;
 
+import MySQL.MySQLRevueDAO;
+
 public class Revue {
 	private int id_revue;
 	private String titre;
@@ -70,5 +72,10 @@ public class Revue {
 	
 	public String toString() {
 		return this.titre;
+	}
+	
+	public int getNbAbonnements() {
+		MySQLRevueDAO r = MySQLRevueDAO.getInstance();
+		return r.getNbAbonnements(id_revue);
 	}
 }

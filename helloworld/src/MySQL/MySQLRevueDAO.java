@@ -77,6 +77,7 @@ public class MySQLRevueDAO implements RevueDAO{
 			return false;
 		}
 	}
+	
 
 	@Override
 	public boolean delete(Revue r) {
@@ -279,6 +280,23 @@ public class MySQLRevueDAO implements RevueDAO{
 		}catch(SQLException e){
 			System.out.println("Pb select" + e.getMessage());
 			return null;
+		}
+	}
+	
+	public int getNbAbonnements(int id_rev) {
+		Connection laCo = Connexion.createConnexion();
+		try {
+			PreparedStatement requete = laCo.prepareStatement("SELECT COUNT(*) AS 'test' FROM Abonnement WHERE id_revue = ?");
+			requete.setInt(1, id_rev);
+			ResultSet res = requete.executeQuery();
+			if(res.next()){
+				return res.getInt("test");
+			}else {
+				return -2;
+			}
+		}catch(SQLException e){
+			System.out.println("Pb select" + e.getMessage());
+			return -1;
 		}
 	}
 	
