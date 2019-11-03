@@ -75,8 +75,8 @@ public class AjoutRevueCtrl{
 		vue = ajoutRevueVue;
 		id_tf_desc.setWrapText(true);
 		p = pr;
-		MySQLPeriodiciteDAO p = MySQLPeriodiciteDAO.getInstance();
-		ObservableList<Periodicite> list = p.getAll(); 
+		PeriodiciteDAO r = DAOFactory.getDAOfactory(p).getPeriodiciteDAO();
+		ObservableList<Periodicite> list = r.getAll(); 
 		id_cb_period.setItems(list);
 		remplirTable();
 		setModeAjout();
@@ -103,7 +103,7 @@ public class AjoutRevueCtrl{
 		id_col_tarif.setCellValueFactory(new PropertyValueFactory<>("tarif"));
 		id_col_period.setCellValueFactory(new PropertyValueFactory<>("libellePeriod"));
 		id_col_abo.setCellValueFactory(new PropertyValueFactory<>("nbAbonnements"));
-		MySQLRevueDAO c = MySQLRevueDAO.getInstance();
+		RevueDAO c = DAOFactory.getDAOfactory(p).getRevueDAO();
 		ObservableList test = c.getAll();
 		id_table.getItems().addAll(test);
 		System.out.println(id_table.getColumns().get(5).getText());
@@ -144,11 +144,11 @@ public class AjoutRevueCtrl{
 			// tout est correct, on insÃ¨re dans la BdD
 			tarif = Double.parseDouble(tarifT);
 			String period = id_cb_period.getSelectionModel().getSelectedItem().toString();
-			MySQLPeriodiciteDAO p = MySQLPeriodiciteDAO.getInstance();
-			int id = p.getByLibelle(period).get(0).getId();
-			MySQLRevueDAO r = MySQLRevueDAO.getInstance();
+			PeriodiciteDAO r = DAOFactory.getDAOfactory(p).getPeriodiciteDAO();
+			int id = ((Periodicite) r.getByLibelle(period).get(0)).getId();
+			RevueDAO s = DAOFactory.getDAOfactory(p).getRevueDAO();
 			Revue Rev = new Revue(1, titre, desc, tarif, "pas d'image", id);
-			r.create(Rev);
+			s.create(Rev);
 			// message de confirmation
 			id_lb_custom.setTextFill(Color.BLACK);
 			id_lb_custom.setText("Revue " + titre + " ajoutée à la Bdd ");
@@ -170,7 +170,7 @@ public class AjoutRevueCtrl{
 		id_col_tarif.setCellValueFactory(new PropertyValueFactory<>("tarif"));
 		id_col_period.setCellValueFactory(new PropertyValueFactory<>("libellePeriod"));
 		id_col_abo.setCellValueFactory(new PropertyValueFactory<>("nbAbonnements"));
-		MySQLRevueDAO c = MySQLRevueDAO.getInstance();
+		RevueDAO c = DAOFactory.getDAOfactory(p).getRevueDAO();
 		Connection laCo = Connexion.createConnexion();
 
 		ObservableList<Revue> a = FXCollections.observableArrayList();
