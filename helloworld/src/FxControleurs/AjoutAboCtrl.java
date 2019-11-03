@@ -307,8 +307,10 @@ public class AjoutAboCtrl {
 					id_error_label.setText("Plusieurs revues sélectionnées");
 				}else {
 					//on supprime la ligne sélectionnée de la vue (fonctionne)
-					id_table.getItems().removeAll(selection);
+					AbonnementDAO a = DAOFactory.getDAOfactory(p).getAbonnementDAO();
+					a.delete((Abonnement)selection.get(0));
 				}
+				remplirTable();
 	}
 
 
