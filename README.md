@@ -14,11 +14,12 @@ Ce qui fonctionne :
 - Affichage du nombre d'abonnements pour chaque revue
 - Affichage du nom/prénom du client au lieu de l'id dans la vue des abonnements
 - Affichage du titre de la revue au lieu de l'id dans la vue des abonnements
+- Accès à la bdd via liste mémoire (fonctionne partiellement)
 
 Ce qui ne fonctionne pas :
 
-- Suppression d'un élément
-- Accès à la BDD via Liste Mémoire
+- Remplissage des combobox en ListeMemoire
+- Tris en liste mémoire
 
 Répartition des tâches :
 
@@ -34,6 +35,9 @@ Répartition des tâches :
 - Affichage du nombre d'abonnements pour chaque revue : Manon
 - Affichage du nom/prénom du client au lieu de l'id dans la vue des abonnements : Manon
 - Affichage du titre de la revue au lieu de l'id dans la vue des abonnements : Manon
+- Affichage des données depuis la liste mémoire : Manon
+- Ajout et suppression dans la liste mémoire : Manon
+- Recherches depuis la liste mémoire (rechercher un client via nom, ville) : Manon
 
 - Suppression d'un élément : Lucas
 
