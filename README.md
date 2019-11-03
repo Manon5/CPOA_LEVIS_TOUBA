@@ -43,5 +43,5 @@ Répartition des tâches :
 
 Pourcentage d'investissement : 
 
-- Lucas : ??
-- Manon : ??
+- Lucas : 35%
+- Manon : 65%
