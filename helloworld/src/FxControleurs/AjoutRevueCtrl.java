@@ -330,6 +330,30 @@ public class AjoutRevueCtrl{
 		remplirTable();
 	}
 
-
+	@FXML
+	public void supprRevue() {
+		//on récupère la ligne sélectionnée
+		ObservableList selection = id_table.getSelectionModel().getSelectedItems();
+		if(selection.size()==0) {
+			id_error_label.setTextFill(Color.RED);
+			id_error_label.setText("Aucune revue sélectionnée");
+		}else if(selection.size() > 1) {
+			id_error_label.setTextFill(Color.RED);
+			id_error_label.setText("Plusieurs revues sélectionnées");
+		}else {
+			Connection laCo = Connexion.createConnexion();
+			try {
+				//on supprime la ligne sélectionnée de la vue (fonctionne)
+				id_table.getItems().removeAll(selection);
+				//on supprime la ligne de la bdd (ne retire pas la ligne de la bdd)
+				PreparedStatement rq;
+				rq = laCo.prepareStatement("DELETE FROM Revue WHERE id_revue='"+selection+"'");
+				rq.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 
 }
