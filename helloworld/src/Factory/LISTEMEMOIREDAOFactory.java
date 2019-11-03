@@ -5,6 +5,9 @@ import DAO.ClientDAO;
 import DAO.PeriodiciteDAO;
 import DAO.RevueDAO;
 import Liste_Memoire.ListeMemoireAbonnementDAO;
+import Liste_Memoire.ListeMemoireClientDAO;
+import Liste_Memoire.ListeMemoirePeriodiciteDAO;
+import Liste_Memoire.ListeMemoireRevueDAO;
 
 public class LISTEMEMOIREDAOFactory extends DAOFactory{
 
@@ -15,20 +18,17 @@ public class LISTEMEMOIREDAOFactory extends DAOFactory{
 
 	@Override
 	public ClientDAO getClientDAO() {
-		// TODO Stub de la méthode généré automatiquement
-		return null;
+		return ListeMemoireClientDAO.getInstance();
 	}
 
 	@Override
 	public RevueDAO getRevueDAO() {
-		// TODO Stub de la méthode généré automatiquement
-		return null;
+		return ListeMemoireRevueDAO.getInstance();
 	}
 
 	@Override
 	public PeriodiciteDAO getPeriodiciteDAO() {
-		// TODO Stub de la méthode généré automatiquement
-		return null;
+		return ListeMemoirePeriodiciteDAO.getInstance();
 	}
 
 }

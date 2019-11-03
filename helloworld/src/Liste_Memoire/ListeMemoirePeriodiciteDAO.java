@@ -6,12 +6,13 @@ import java.util.List;
 import DAO.PeriodiciteDAO;
 import DAO.Persistance;
 import POJO.Periodicite;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
 
 	private static ListeMemoirePeriodiciteDAO instance;
-	private List<Periodicite> donnees;
+	private ObservableList<Periodicite> donnees;
 	
 	@Override
 	public boolean create(Periodicite objet) {
@@ -68,7 +69,7 @@ public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
 	
 	private ListeMemoirePeriodiciteDAO() {
 
-		this.donnees = new ArrayList<Periodicite>();
+		this.donnees = FXCollections.observableArrayList();
 
 		this.donnees.add(new Periodicite(1, "Mensuel"));
 		this.donnees.add(new Periodicite(2, "Quotidien"));
@@ -79,7 +80,7 @@ public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
 		// Ne fonctionne que si l'objet métier est bien fait...
 		int idx = this.donnees.indexOf(new Periodicite(id, "test"));
 		if (idx == -1) {
-			throw new IllegalArgumentException("Aucun objet ne possède cet identifiant");
+			throw new IllegalArgumentException("Aucun objet ne poss�de cet identifiant");
 		} else {
 			return this.donnees.get(idx);
 		}
@@ -93,9 +94,15 @@ public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
 
 	@Override
 	public ObservableList<Periodicite> getAll() {
+		return donnees;
+	}
+
+	@Override
+	public ObservableList getByLibelle(String libelle) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	
 
 }

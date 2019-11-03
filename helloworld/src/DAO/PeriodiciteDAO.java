@@ -12,4 +12,7 @@ public interface PeriodiciteDAO extends DAO<Periodicite>{
 	public abstract Periodicite getById(int id);
 	public ObservableList<Periodicite> getAll();
 
+
+	ObservableList getByLibelle(String libelle);
+
 }

@@ -8,16 +8,17 @@ import java.util.List;
 import DAO.*;
 import POJO.Periodicite;
 import POJO.Revue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class ListeMemoireRevueDAO implements RevueDAO{
 
 	private static ListeMemoireRevueDAO instance;
-	private List<Revue> donnees;
+	private ObservableList<Revue> donnees;
 	
 	private ListeMemoireRevueDAO() {
 
-		this.donnees = new ArrayList<Revue>();
+		this.donnees = FXCollections.observableArrayList();
 		this.donnees.add(new Revue(1, "Tintin", "BD de Tintin", 10.50, "couverture_tintin.png", 1));
 		this.donnees.add(new Revue(2, "Le Monde", "Journal d'informations", 3.0, "le_monde.jpeg", 2));
 	}
@@ -86,8 +87,7 @@ public class ListeMemoireRevueDAO implements RevueDAO{
 
 	@Override
 	public ObservableList<Revue> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.donnees;
 	}
 
 

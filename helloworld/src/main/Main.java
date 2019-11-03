@@ -30,6 +30,8 @@ public class Main extends Application{
 	@FXML private RadioMenuItem local_mode;
 	
 	private Stage st;
+	private DAOFactory fact;
+	private Persistance p = Persistance.MYSQL;
 
 	
 	@Override
@@ -42,6 +44,7 @@ public class Main extends Application{
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Projet de CPOA");
 		primaryStage.show();
+		p = Persistance.MYSQL;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -51,10 +54,10 @@ public class Main extends Application{
 		//partie persistance
 		if(local_mode.isSelected()) {
 			System.out.println("Mode local activé");	
-			DAOFactory fact = DAOFactory.getDAOfactory(Persistance.LISTE_MEMOIRE);
+			p = Persistance.LISTE_MEMOIRE;
 		}else {
 			System.out.println("Mode local désactivé");
-			DAOFactory fact = DAOFactory.getDAOfactory(Persistance.MYSQL);
+			p = Persistance.MYSQL;
 		}
 	}
 	
@@ -72,7 +75,9 @@ public class Main extends Application{
 	}
 	
 	public void addPeriod() {
-		AjoutPeriodVue V = new AjoutPeriodVue();
+
+		System.out.println(p);
+		AjoutPeriodVue V = new AjoutPeriodVue(p);
 	}
 	
 	public void addAbo() {

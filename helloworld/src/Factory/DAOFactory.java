@@ -4,10 +4,11 @@ import DAO.*;
 import DAO.Persistance;
 
 public abstract class DAOFactory {
+	
+	
 	public static DAOFactory getDAOfactory(Persistance cible) {
 		
 		DAOFactory daoF = null;
-		
 		switch(cible) {
 		case MYSQL:
 			daoF = new MYSQLDAOFactory();

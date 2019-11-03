@@ -32,5 +32,14 @@ public int getId() {
  public String toString() {
 	 return this.libelle;
  }
+ 
+ public boolean equals(Object period) {
+		Periodicite a = (Periodicite)period;
+		if(a.getId() != this.getId()) {
+			return false;
+		}else{
+			return true;
+		}
+	}
 
 }

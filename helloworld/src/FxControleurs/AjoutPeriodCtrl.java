@@ -1,7 +1,11 @@
 package FxControleurs;
 
+import DAO.PeriodiciteDAO;
+import DAO.Persistance;
+import Factory.DAOFactory;
 import FxVues.AjoutPeriodVue;
 import FxVues.AjoutRevueVue;
+import Liste_Memoire.ListeMemoirePeriodiciteDAO;
 import MySQL.MySQLPeriodiciteDAO;
 import MySQL.MySQLRevueDAO;
 import POJO.Periodicite;
@@ -32,12 +36,15 @@ public class AjoutPeriodCtrl {
 	
 	private AjoutPeriodVue vue;
 
+	private  DAOFactory fact;
 	private int id_select;
+	private Persistance p;
 	
 	void AjoutRevueCtrl() {}
 
-	public void setVue(AjoutPeriodVue ajoutPeriodVue) {
+	public void setVue(AjoutPeriodVue ajoutPeriodVue, Persistance pr) {
 		vue = ajoutPeriodVue;
+		p = pr;
 		remplirTable();
 		setModeAjout();
 	}
@@ -57,8 +64,8 @@ public class AjoutPeriodCtrl {
 		//on prépare les colonnes
 		id_col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
 		id_col_libelle.setCellValueFactory(new PropertyValueFactory<>("libelle"));
-		
-		MySQLPeriodiciteDAO c = MySQLPeriodiciteDAO.getInstance();
+		System.out.println(p);
+		PeriodiciteDAO c = DAOFactory.getDAOfactory(p).getPeriodiciteDAO();
 		ObservableList test = c.getAll();
 		id_table.getItems().addAll(test);
 	}
@@ -70,8 +77,8 @@ public class AjoutPeriodCtrl {
 			id_lb_custom.setTextFill(Color.RED);
 			id_lb_custom.setText("Veuillez renseigner une pÃ©riodicitÃ© svp");
 		}else {
-			MySQLPeriodiciteDAO p = MySQLPeriodiciteDAO.getInstance();
-			p.create(new Periodicite(1, libelle));
+			PeriodiciteDAO c = DAOFactory.getDAOfactory(p).getPeriodiciteDAO();
+			c.create(new Periodicite(1, libelle));
 			// message de confirmation
 			id_lb_custom.setTextFill(Color.BLACK);
 			id_lb_custom.setText("Périodicité " + libelle + " ajoutée à la bdd");
@@ -97,7 +104,7 @@ public class AjoutPeriodCtrl {
 			id_col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
 			id_col_libelle.setCellValueFactory(new PropertyValueFactory<>("libelle"));
 			
-			MySQLPeriodiciteDAO c = MySQLPeriodiciteDAO.getInstance();
+			PeriodiciteDAO c = DAOFactory.getDAOfactory(p).getPeriodiciteDAO();
 			ObservableList test = c.getByLibelle(libelle);
 			
 			// si aucun résultat
@@ -152,8 +159,8 @@ public class AjoutPeriodCtrl {
 			id_lb_custom.setTextFill(Color.RED);
 			id_lb_custom.setText("Veuillez renseigner une périodicité svp");
 		}else {
-			MySQLPeriodiciteDAO p = MySQLPeriodiciteDAO.getInstance();
-			p.update(new Periodicite(id_select, libelle));
+			PeriodiciteDAO c = DAOFactory.getDAOfactory(p).getPeriodiciteDAO();
+			c.update(new Periodicite(id_select, libelle));
 			// message de confirmation
 			id_lb_custom.setTextFill(Color.BLACK);
 			id_lb_custom.setText("Périodicité n°" + id_select + " modifiée dans la bdd");

@@ -5,6 +5,9 @@ import DAO.ClientDAO;
 import DAO.PeriodiciteDAO;
 import DAO.RevueDAO;
 import MySQL.MySQLAbonnementDAO;
+import MySQL.MySQLClientDAO;
+import MySQL.MySQLPeriodiciteDAO;
+import MySQL.MySQLRevueDAO;
 
 public class MYSQLDAOFactory extends DAOFactory{
 
@@ -15,20 +18,17 @@ public class MYSQLDAOFactory extends DAOFactory{
 
 	@Override
 	public ClientDAO getClientDAO() {
-		// TODO Stub de la méthode généré automatiquement
-		return null;
+		return MySQLClientDAO.getInstance();
 	}
 
 	@Override
 	public RevueDAO getRevueDAO() {
-		// TODO Stub de la méthode généré automatiquement
-		return null;
+		return MySQLRevueDAO.getInstance();
 	}
 
 	@Override
 	public PeriodiciteDAO getPeriodiciteDAO() {
-		// TODO Stub de la méthode généré automatiquement
-		return null;
+		return MySQLPeriodiciteDAO.getInstance();
 	}
 	
 }
