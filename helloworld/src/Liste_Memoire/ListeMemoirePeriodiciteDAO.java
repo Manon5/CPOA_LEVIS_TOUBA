@@ -98,9 +98,16 @@ public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
 	}
 
 	@Override
-	public ObservableList getByLibelle(String libelle) {
-		// TODO Auto-generated method stub
-		return null;
+	public ObservableList<Periodicite> getByLibelle(String libelle) {
+		int i = 0;
+		ObservableList<Periodicite> res = FXCollections.observableArrayList();
+		while(i < donnees.size()) {
+			if(donnees.get(i).getLibelle().equals(libelle)) {
+				res.add(donnees.get(i));
+			}
+			i++;
+		}
+		return res;
 	}
 	
 	
