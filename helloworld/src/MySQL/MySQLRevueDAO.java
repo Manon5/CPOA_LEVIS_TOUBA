@@ -292,7 +292,7 @@ public class MySQLRevueDAO implements RevueDAO{
 			if(res.next()){
 				return res.getInt("test");
 			}else {
-				return -2;
+				return 0;
 			}
 		}catch(SQLException e){
 			System.out.println("Pb select" + e.getMessage());

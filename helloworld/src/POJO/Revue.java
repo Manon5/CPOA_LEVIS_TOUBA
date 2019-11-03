@@ -1,5 +1,6 @@
 package POJO;
 
+import MySQL.MySQLPeriodiciteDAO;
 import MySQL.MySQLRevueDAO;
 
 public class Revue {
@@ -77,5 +78,10 @@ public class Revue {
 	public int getNbAbonnements() {
 		MySQLRevueDAO r = MySQLRevueDAO.getInstance();
 		return r.getNbAbonnements(id_revue);
+	}
+	
+	public String getLibellePeriod() {
+		MySQLPeriodiciteDAO r = MySQLPeriodiciteDAO.getInstance();
+		return r.getById(id_periodicite).getLibelle();
 	}
 }

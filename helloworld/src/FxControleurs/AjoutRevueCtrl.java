@@ -94,7 +94,7 @@ public class AjoutRevueCtrl{
 		id_col_titre.setCellValueFactory(new PropertyValueFactory<>("titre"));
 		id_col_desc.setCellValueFactory(new PropertyValueFactory<>("desc"));
 		id_col_tarif.setCellValueFactory(new PropertyValueFactory<>("tarif"));
-		id_col_period.setCellValueFactory(new PropertyValueFactory<>("idPeriodicite"));
+		id_col_period.setCellValueFactory(new PropertyValueFactory<>("libellePeriod"));
 		id_col_abo.setCellValueFactory(new PropertyValueFactory<>("nbAbonnements"));
 		MySQLRevueDAO c = MySQLRevueDAO.getInstance();
 		ObservableList test = c.getAll();
