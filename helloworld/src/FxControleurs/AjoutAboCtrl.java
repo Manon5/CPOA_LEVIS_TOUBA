@@ -86,8 +86,8 @@ public class AjoutAboCtrl {
 		
 		id_table.getItems().clear();
 		//on prépare les colonnes
-		id_col_client.setCellValueFactory(new PropertyValueFactory<>("idClient"));
-		id_col_revue.setCellValueFactory(new PropertyValueFactory<>("idRevue"));
+		id_col_client.setCellValueFactory(new PropertyValueFactory<>("nomClient"));
+		id_col_revue.setCellValueFactory(new PropertyValueFactory<>("nomRevue"));
 		id_col_date_deb.setCellValueFactory(new PropertyValueFactory<>("dateDebut"));
 		id_col_date_fin.setCellValueFactory(new PropertyValueFactory<>("dateFin"));
 		
@@ -155,8 +155,8 @@ public class AjoutAboCtrl {
 			id_error_label.setText("Entrer une date pour la recherche svp");
 		}else {
 			//on prépare les colonnes
-			id_col_client.setCellValueFactory(new PropertyValueFactory<>("idClient"));
-			id_col_revue.setCellValueFactory(new PropertyValueFactory<>("idRevue"));
+			id_col_client.setCellValueFactory(new PropertyValueFactory<>("nomClient"));
+			id_col_revue.setCellValueFactory(new PropertyValueFactory<>("nomRevue"));
 			id_col_date_deb.setCellValueFactory(new PropertyValueFactory<>("dateDebut"));
 			id_col_date_fin.setCellValueFactory(new PropertyValueFactory<>("dateFin"));
 
@@ -181,8 +181,8 @@ public class AjoutAboCtrl {
 	public void triParClient(){
 		id_table.getItems().clear();
 		//on prépare les colonnes
-		id_col_client.setCellValueFactory(new PropertyValueFactory<>("idClient"));
-		id_col_revue.setCellValueFactory(new PropertyValueFactory<>("idRevue"));
+		id_col_client.setCellValueFactory(new PropertyValueFactory<>("nomClient"));
+		id_col_revue.setCellValueFactory(new PropertyValueFactory<>("nomRevue"));
 		id_col_date_deb.setCellValueFactory(new PropertyValueFactory<>("dateDebut"));
 		id_col_date_fin.setCellValueFactory(new PropertyValueFactory<>("dateFin"));
 		MySQLAbonnementDAO c = MySQLAbonnementDAO.getInstance();
@@ -195,8 +195,8 @@ public class AjoutAboCtrl {
 	public void triParRevue(){
 		id_table.getItems().clear();
 		//on prépare les colonnes
-		id_col_client.setCellValueFactory(new PropertyValueFactory<>("idClient"));
-		id_col_revue.setCellValueFactory(new PropertyValueFactory<>("idRevue"));
+		id_col_client.setCellValueFactory(new PropertyValueFactory<>("nomClient"));
+		id_col_revue.setCellValueFactory(new PropertyValueFactory<>("nomRevue"));
 		id_col_date_deb.setCellValueFactory(new PropertyValueFactory<>("dateDebut"));
 		id_col_date_fin.setCellValueFactory(new PropertyValueFactory<>("dateFin"));
 		MySQLAbonnementDAO c = MySQLAbonnementDAO.getInstance();

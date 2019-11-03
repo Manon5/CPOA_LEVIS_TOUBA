@@ -2,6 +2,9 @@ package POJO;
 
 import java.time.LocalDate;
 
+import MySQL.MySQLClientDAO;
+import MySQL.MySQLRevueDAO;
+
 //import modele.metier;
 public class Abonnement {
 	private int idClient;
@@ -60,6 +63,16 @@ public class Abonnement {
 	public String toString() {
 		return "(" + (this.idClient>=0?this.idClient:"nouveau")+")" + this.idRevue + this.dateDebut + this.dateFin;
 		
+	}
+	
+	public String getNomClient() {
+		MySQLClientDAO r = MySQLClientDAO.getInstance();
+		return r.getById(idClient).toString();
+	}
+	
+	public String getNomRevue() {
+		MySQLRevueDAO r = MySQLRevueDAO.getInstance();
+		return r.getById(idRevue).toString();
 	}
 	
 
