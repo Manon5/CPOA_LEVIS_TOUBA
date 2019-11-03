@@ -11,13 +11,14 @@ Ce qui fonctionne :
 - Voir seulement les abonnements en cours
 - Accès à la BDD via MySQL
 - passage du mode MySQL au mode ListeMémoire
+- Affichage du nombre d'abonnements pour chaque revue
+- Affichage du nom/prénom du client au lieu de l'id dans la vue des abonnements
+- Affichage du titre de la revue au lieu de l'id dans la vue des abonnements
 
 Ce qui ne fonctionne pas :
 
 - Suppression d'un élément
 - Accès à la BDD via Liste Mémoire
-- Affichage du nombre d'abonnements pour chaque revue
-- Affichage du nom/prénom du client au lieu de l'id
 
 Répartition des tâches :
 
@@ -30,6 +31,9 @@ Répartition des tâches :
 - Recherches et tris : Manon
 - Affichage des abonnements en cours : Manon
 - Réalisation des interfaces graphiques : Manon
+- Affichage du nombre d'abonnements pour chaque revue : Manon
+- Affichage du nom/prénom du client au lieu de l'id dans la vue des abonnements : Manon
+- Affichage du titre de la revue au lieu de l'id dans la vue des abonnements : Manon
 
 - Suppression d'un élément : Lucas
 
