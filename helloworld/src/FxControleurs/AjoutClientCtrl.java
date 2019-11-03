@@ -374,5 +374,22 @@ public class AjoutClientCtrl {
 		setModeAjout();
 		remplirTable();
 	}
+	
+	@FXML
+	public void supprClient() {
+		//on récupère la ligne sélectionnée
+		ObservableList selection = id_table.getSelectionModel().getSelectedItems();
+		if(selection.size()==0) {
+			id_error_label.setTextFill(Color.RED);
+			id_error_label.setText("Aucune revue sélectionnée");
+		}else if(selection.size() > 1) {
+			id_error_label.setTextFill(Color.RED);
+			id_error_label.setText("Plusieurs revues sélectionnées");
+		}else {
+			//on supprime la ligne sélectionnée de la vue (fonctionne)
+			id_table.getItems().removeAll(selection);
+		}
+	}
+	
 	}
 
