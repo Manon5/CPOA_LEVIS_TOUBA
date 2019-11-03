@@ -29,6 +29,31 @@ public class MySQLClientDAO implements ClientDAO{
 		return instance;
 	}
 	
+	public ObservableList<Client> OrderByNom(){
+		Connection laCo = Connexion.createConnexion();
+
+		ObservableList<Client> a = FXCollections.observableArrayList();
+		try {
+			PreparedStatement requete = laCo.prepareStatement("SELECT distinct * FROM Client ORDER BY nom, prenom");
+			ResultSet res = requete.executeQuery();
+			while(res.next()) {
+				Client c1 = new Client();
+				c1.setId(res.getInt("id_client"));
+				c1.setPrenom(res.getString("prenom"));
+				c1.setNom(res.getString("nom"));
+				c1.setNoRue(res.getString("no_rue"));
+				c1.setVoie(res.getString("voie"));
+				c1.setCodePostal(res.getString("code_postal"));
+				c1.setVille(res.getString("ville"));
+				c1.setPays(res.getString("pays"));
+				a.add(c1);
+			}
+		}catch(SQLException e){
+			System.out.println("Pb select" + e.getMessage());
+		}
+		return a;
+	}
+	
 	
 
 	@Override

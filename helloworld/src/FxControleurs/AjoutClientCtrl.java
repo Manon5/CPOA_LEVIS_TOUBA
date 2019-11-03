@@ -202,30 +202,8 @@ public class AjoutClientCtrl {
 			id_col_code.setCellValueFactory(new PropertyValueFactory<>("codePostal"));
 			id_col_ville.setCellValueFactory(new PropertyValueFactory<>("ville"));
 			id_col_pays.setCellValueFactory(new PropertyValueFactory<>("pays"));
-			
 			MySQLClientDAO c = MySQLClientDAO.getInstance();
-			
-			Connection laCo = Connexion.createConnexion();
-
-			ObservableList<Client> a = FXCollections.observableArrayList();
-			try {
-				PreparedStatement requete = laCo.prepareStatement("SELECT distinct * FROM Client ORDER BY nom, prenom");
-				ResultSet res = requete.executeQuery();
-				while(res.next()) {
-					Client c1 = new Client();
-					c1.setId(res.getInt("id_client"));
-					c1.setPrenom(res.getString("prenom"));
-					c1.setNom(res.getString("nom"));
-					c1.setNoRue(res.getString("no_rue"));
-					c1.setVoie(res.getString("voie"));
-					c1.setCodePostal(res.getString("code_postal"));
-					c1.setVille(res.getString("ville"));
-					c1.setPays(res.getString("pays"));
-					a.add(c1);
-				}
-			}catch(SQLException e){
-				System.out.println("Pb select" + e.getMessage());
-			}
+			ObservableList<Client> a = c.OrderByNom();
 			id_table.getItems().addAll(a);
 		}
 	
@@ -248,8 +226,6 @@ public class AjoutClientCtrl {
 			id_col_pays.setCellValueFactory(new PropertyValueFactory<>("pays"));
 			MySQLClientDAO c = MySQLClientDAO.getInstance();
 			ObservableList test = c.getByVille(ville);
-			
-			
 			// si on a pas de résultat
 			if(test.isEmpty()) {
 				id_error_label.setTextFill(Color.RED);
@@ -358,7 +334,7 @@ public class AjoutClientCtrl {
 			id_lb_custom.setTextFill(Color.RED);
 			id_lb_custom.setText("Veuillez entrer un pays correct svp");
 		}else {
-			MySQLClientDAO c = MySQLClientDAO.getInstance();
+			ClientDAO c = DAOFactory.getDAOfactory(p).getClientDAO();
 			Client Cli = new Client(id_select, nom, prenom, no_rue, voie, code_postal, ville, pays);
 			c.update(Cli);
 			// message de confirmation
@@ -391,8 +367,10 @@ public class AjoutClientCtrl {
 			id_error_label.setText("Plusieurs revues sélectionnées");
 		}else {
 			//on supprime la ligne sélectionnée de la vue (fonctionne)
-			id_table.getItems().removeAll(selection);
+			ClientDAO c = DAOFactory.getDAOfactory(p).getClientDAO();
+			c.delete((Client)selection.get(0));
 		}
+		remplirTable();
 	}
 	
 	}
