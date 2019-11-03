@@ -66,12 +66,12 @@ public class Main extends Application{
 	}
 	
 	public void addRevue() {
-		AjoutRevueVue V = new AjoutRevueVue();
+		AjoutRevueVue V = new AjoutRevueVue(p);
 	}
 
 	
 	public void addClient() {
-		AjoutClientVue V = new AjoutClientVue();
+		AjoutClientVue V = new AjoutClientVue(p);
 	}
 	
 	public void addPeriod() {
@@ -81,7 +81,7 @@ public class Main extends Application{
 	}
 	
 	public void addAbo() {
-		AjoutAboVue V = new AjoutAboVue();
+		AjoutAboVue V = new AjoutAboVue(p);
 	}
 	
 	

@@ -84,4 +84,13 @@ public class Revue {
 		MySQLPeriodiciteDAO r = MySQLPeriodiciteDAO.getInstance();
 		return r.getById(id_periodicite).getLibelle();
 	}
+	
+	public boolean equals(Object rev) {
+		Revue a = (Revue)rev;
+		if(a.getId() != this.getId()) {
+			return false;
+		}else{
+			return true;
+		}
+	}
 }

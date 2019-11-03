@@ -8,16 +8,17 @@ import DAO.*;
 import MySQL.MySQLAbonnementDAO;
 import POJO.Abonnement;
 import POJO.Revue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class ListeMemoireAbonnementDAO implements AbonnementDAO{
 
 	private static ListeMemoireAbonnementDAO instance;
-	private List<Abonnement> donnees;
+	private ObservableList<Abonnement> donnees;
 	
 	
 	private ListeMemoireAbonnementDAO() {
-		this.donnees = new ArrayList<Abonnement>();
+		this.donnees = FXCollections.observableArrayList();
 		LocalDate dd1 = LocalDate.of(2005, 02, 25);
 		LocalDate df1 = LocalDate.of(2000, 4, 30);
 		LocalDate dd2 = LocalDate.of(2001, 12, 10);
@@ -120,8 +121,7 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO{
 
 	@Override
 	public ObservableList<Abonnement> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return donnees;
 	}
 
 
@@ -144,6 +144,14 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO{
 
 	@Override
 	public ObservableList<Abonnement> getAllByRevue() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public ObservableList getByDateDebut(LocalDate date) {
 		// TODO Auto-generated method stub
 		return null;
 	}

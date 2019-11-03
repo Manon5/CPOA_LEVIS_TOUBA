@@ -2,6 +2,7 @@ package FxVues;
 	
 import java.net.URL;
 
+import DAO.Persistance;
 import FxControleurs.AjoutAboCtrl;
 import FxControleurs.AjoutRevueCtrl;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +14,7 @@ import javafx.scene.layout.VBox;
 public class AjoutAboVue extends Stage {
 	
 	
-	public AjoutAboVue() {
+	public AjoutAboVue(Persistance p) {
 		try {
 	        final URL fxmlURL= getClass().getResource("/sources/affi_abo.fxml");
 	        this.setTitle("Saisir un abonnement");
@@ -23,7 +24,7 @@ public class AjoutAboVue extends Stage {
 			this.setScene(scene);
 			this.initModality(Modality.APPLICATION_MODAL);
 			AjoutAboCtrl controleur = fxmlLoader.getController();
-			controleur.setVue(this);
+			controleur.setVue(this, p);
 			this.show();
 		}catch(Exception e){
 			
