@@ -15,7 +15,8 @@ public class ListeMemoireClientDAO implements ClientDAO {
 	
 	private ListeMemoireClientDAO() {
 		this.donnees = FXCollections.observableArrayList();
-		this.donnees.add(new Client(1, "Lucas", "LEVIS", "14", "Rue de la cathédrale", "57000", "Metz", "France"));
+		this.donnees.add(new Client(1, "LEVIS", "Lucas", "14", "Rue de la cathédrale", "57000", "Metz", "France"));
+		this.donnees.add(new Client(2, "RAMM", "Arno", "02", "Rue des tulipes", "57000", "Metz", "France"));
 	}
 	
 	

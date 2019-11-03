@@ -66,6 +66,7 @@ public class AjoutAboCtrl {
 		// remplissage combobox
 		ClientDAO c =  DAOFactory.getDAOfactory(p).getClientDAO();
 		ObservableList<Client> list = p.getAll(); 
+		//System.out.println(list.toString());
 		id_cb_client.setItems(list);
 		RevueDAO r = DAOFactory.getDAOfactory(p).getRevueDAO();
 		ObservableList<Revue> list2 = r.getAll(); 

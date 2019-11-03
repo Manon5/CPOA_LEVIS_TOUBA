@@ -1,7 +1,4 @@
-// Classe corrigée : à tester ?
-
 package Liste_Memoire;
-
 import java.util.ArrayList;
 import java.util.List;
 
