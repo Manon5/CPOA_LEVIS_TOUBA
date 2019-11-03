@@ -23,7 +23,7 @@ public class AjoutRevueVue extends Stage {
 			this.setScene(scene);
 			this.initModality(Modality.APPLICATION_MODAL);
 			AjoutRevueCtrl controleur = fxmlLoader.getController();
-			controleur.setVue(this);
+			controleur.setVue(this, p);
 			this.show();
 		}catch(Exception e){
 			

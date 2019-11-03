@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 
 import DAO.AbonnementDAO;
 import DAO.PeriodiciteDAO;
+import DAO.Persistance;
 import DAO.RevueDAO;
 import Factory.DAOFactory;
 import FxVues.AjoutRevueVue;
@@ -65,13 +66,15 @@ public class AjoutRevueCtrl{
 	private int id_select;
 	
 	private AjoutRevueVue vue;
+	private Persistance p;
 	
 	public void AjoutRevueCtrl() {}
 
 
-	public void setVue(AjoutRevueVue ajoutRevueVue) {
+	public void setVue(AjoutRevueVue ajoutRevueVue, Persistance pr) {
 		vue = ajoutRevueVue;
 		id_tf_desc.setWrapText(true);
+		p = pr;
 		MySQLPeriodiciteDAO p = MySQLPeriodiciteDAO.getInstance();
 		ObservableList<Periodicite> list = p.getAll(); 
 		id_cb_period.setItems(list);
@@ -345,9 +348,9 @@ public class AjoutRevueCtrl{
 			id_error_label.setTextFill(Color.RED);
 			id_error_label.setText("Plusieurs revues sélectionnées");
 		}else {
-				//on supprime la ligne de la bdd (ne retire pas la ligne de la bdd)
-			/*RevueDAO r = DAOFactory.getDAOfactory(p).getRevueDAO();
-			r.delete((Revue)selection.get(0));*/
+			//on supprime la ligne de la bdd (ne retire pas la ligne de la bdd)
+			RevueDAO r = DAOFactory.getDAOfactory(p).getRevueDAO();
+			r.delete((Revue)selection.get(0));
 		}
 		remplirTable();
 	}

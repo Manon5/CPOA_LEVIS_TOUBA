@@ -65,7 +65,7 @@
                <children>
                   <Button alignment="CENTER" mnemonicParsing="false" onAction="#setModeAjout" text="Ajouter" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                   <Button mnemonicParsing="false" onAction="#affiModifPeriod" text="Modifier" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                  <Button mnemonicParsing="false" text="Supprimer" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <Button mnemonicParsing="false" onAction="#supprPeriod" text="Supprimer" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
             <GridPane layoutX="699.0" layoutY="179.0" prefHeight="136.0" prefWidth="264.0" style="-fx-border-color: grey;">
