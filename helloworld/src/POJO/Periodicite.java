@@ -33,13 +33,13 @@ public int getId() {
 	 return this.libelle;
  }
  
- public boolean equals(Object period) {
+ /*public boolean equals(Object period) {
 		Periodicite a = (Periodicite)period;
 		if(a.getId() != this.getId()) {
 			return false;
 		}else{
 			return true;
 		}
-	}
+	}*/
 
 }

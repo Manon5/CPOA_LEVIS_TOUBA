@@ -61,7 +61,6 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 			requete.setInt(4, a.getIdRevue());
 			requete.executeUpdate();
 			laCo.close();
-			System.out.println(a.getDateDebut());
 			return true;
 		}catch(SQLException e){
 			System.out.println("Pb select" + e.getMessage());

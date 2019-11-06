@@ -76,7 +76,7 @@ public class Abonnement {
 	}
 	
 
-	public boolean equals(Object abo) {
+	/*public boolean equals(Object abo) {
 		Abonnement a = (Abonnement)abo;
 		if(a.getIdClient() != this.getIdClient()) {
 			return false;
@@ -85,7 +85,7 @@ public class Abonnement {
 		}else{
 			return true;
 		}
-	}
+	}*/
 
 
 

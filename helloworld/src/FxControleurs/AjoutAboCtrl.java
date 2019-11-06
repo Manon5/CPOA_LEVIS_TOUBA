@@ -92,7 +92,7 @@ public class AjoutAboCtrl {
 	public void remplirTable() {
 		
 		id_table.getItems().clear();
-		//on prépare les colonnes
+		//on prï¿½pare les colonnes
 		id_col_client.setCellValueFactory(new PropertyValueFactory<>("nomClient"));
 		id_col_revue.setCellValueFactory(new PropertyValueFactory<>("nomRevue"));
 		id_col_date_deb.setCellValueFactory(new PropertyValueFactory<>("dateDebut"));
@@ -123,7 +123,7 @@ public class AjoutAboCtrl {
 		
 		if(dateDeb == null) {
 			id_lb_custom.setTextFill(Color.RED);
-			id_lb_custom.setText("Veuillez renseigner une date de début svp");
+			id_lb_custom.setText("Veuillez renseigner une date de dï¿½but svp");
 		}else if(dateFin == null) {
 			id_lb_custom.setTextFill(Color.RED);
 			id_lb_custom.setText("Veuillez renseigner une date de fin svp");
@@ -135,21 +135,18 @@ public class AjoutAboCtrl {
 			id_lb_custom.setText("Veuillez choisir une revue svp");
 		}else if(dateFin.isBefore(dateDeb)) {
 			id_lb_custom.setTextFill(Color.RED);
-			id_lb_custom.setText("La date de fin est supérieure à la date de début");
+			id_lb_custom.setText("La date de fin est supï¿½rieure ï¿½ la date de dï¿½but");
 		}else {
-			// tout est correct, on insère dans la BdD
+			// tout est correct, on insï¿½re dans la BdD
 			Client  cli = id_cb_client.getSelectionModel().getSelectedItem();
-			System.out.println("Client : ");
-			System.out.println(cli.toString());
-			System.out.println(cli.getId());
 			Revue  rev = id_cb_revue.getSelectionModel().getSelectedItem();
 			
-			//AbonnementDAO r = DAOFactory.getDAOfactory(p).getAbonnementDAO();
-			//Abonnement Abo = new Abonnement(rev.getId(),cli.getId(),  dateDeb, dateFin);
-			//r.create(Abo);
+			AbonnementDAO r = DAOFactory.getDAOfactory(p).getAbonnementDAO();
+			Abonnement Abo = new Abonnement(rev.getId(),cli.getId(),  dateDeb, dateFin);
+			r.create(Abo);
 			// message de confirmation
 			id_lb_custom.setTextFill(Color.BLACK);
-			id_lb_custom.setText("Abonnement ajouté à la Bdd ");
+			id_lb_custom.setText("Abonnement ajoutï¿½ï¿½ la Bdd ");
 		}
 		remplirTable();
 	}
@@ -164,7 +161,7 @@ public class AjoutAboCtrl {
 			id_error_label.setTextFill(Color.RED);
 			id_error_label.setText("Entrer une date pour la recherche svp");
 		}else {
-			//on prépare les colonnes
+			//on prï¿½pare les colonnes
 			id_col_client.setCellValueFactory(new PropertyValueFactory<>("nomClient"));
 			id_col_revue.setCellValueFactory(new PropertyValueFactory<>("nomRevue"));
 			id_col_date_deb.setCellValueFactory(new PropertyValueFactory<>("dateDebut"));
@@ -173,13 +170,13 @@ public class AjoutAboCtrl {
 			AbonnementDAO c = DAOFactory.getDAOfactory(p).getAbonnementDAO();
 			ObservableList test = c.getByDateDebut(date);
 			
-			//si aucun résultat
+			//si aucun rï¿½sultat
 			if(test.isEmpty()) {
 				id_error_label.setTextFill(Color.RED);
-				id_error_label.setText("Aucun résultat");
+				id_error_label.setText("Aucun rï¿½sultat");
 			}else {
 				id_error_label.setTextFill(Color.BLACK);
-				id_error_label.setText("Recherche terminée");
+				id_error_label.setText("Recherche terminï¿½e");
 			}
 			id_table.getItems().addAll(test);
 		}
@@ -190,7 +187,7 @@ public class AjoutAboCtrl {
 	
 	public void triParClient(){
 		id_table.getItems().clear();
-		//on prépare les colonnes
+		//on prï¿½pare les colonnes
 		id_col_client.setCellValueFactory(new PropertyValueFactory<>("nomClient"));
 		id_col_revue.setCellValueFactory(new PropertyValueFactory<>("nomRevue"));
 		id_col_date_deb.setCellValueFactory(new PropertyValueFactory<>("dateDebut"));
@@ -204,7 +201,7 @@ public class AjoutAboCtrl {
 	
 	public void triParRevue(){
 		id_table.getItems().clear();
-		//on prépare les colonnes
+		//on prï¿½pare les colonnes
 		id_col_client.setCellValueFactory(new PropertyValueFactory<>("nomClient"));
 		id_col_revue.setCellValueFactory(new PropertyValueFactory<>("nomRevue"));
 		id_col_date_deb.setCellValueFactory(new PropertyValueFactory<>("dateDebut"));
@@ -217,16 +214,16 @@ public class AjoutAboCtrl {
 	
 	public void affiModifAbo() {
 		
-		// on récupère la sélection
+		// on rï¿½cupï¿½re la sï¿½lection
 		ObservableList selection = id_table.getSelectionModel().getSelectedItems();
 		if(selection.size() == 0) {
 			id_error_label.setTextFill(Color.RED);
-			id_error_label.setText("Aucun abonnement sélectionné");
+			id_error_label.setText("Aucun abonnement sï¿½lectionnï¿½");
 		}else if(selection.size() > 1) {
 			id_error_label.setTextFill(Color.RED);
-			id_error_label.setText("Plusieurs abonnements sélectionnés");
+			id_error_label.setText("Plusieurs abonnements sï¿½lectionnï¿½s");
 		}else {
-			// on prépare l'interface 
+			// on prï¿½pare l'interface 
 			Abonnement a = ((Abonnement) selection.get(0));
 			id_client = a.getIdClient();
 			id_revue = a.getIdRevue();
@@ -235,7 +232,7 @@ public class AjoutAboCtrl {
 			id_btn_creer.setVisible(false);
 			id_btn_valider.setVisible(true);
 			id_btn_annuler.setVisible(true);
-			label_abonnement.setText("Modifier l'abonnement du client" + id_client + " à la revue " + id_revue);
+			label_abonnement.setText("Modifier l'abonnement du client" + id_client + " ï¿½ la revue " + id_revue);
 
 			ClientDAO i = DAOFactory.getDAOfactory(p).getClientDAO();
 			id_cb_client.getSelectionModel().select(i.getById(a.getIdClient()));
@@ -257,7 +254,7 @@ public class AjoutAboCtrl {
 		
 		if(dateDeb == null) {
 			id_lb_custom.setTextFill(Color.RED);
-			id_lb_custom.setText("Veuillez renseigner une date de début svp");
+			id_lb_custom.setText("Veuillez renseigner une date de dï¿½but svp");
 		}else if(dateFin == null) {
 			id_lb_custom.setTextFill(Color.RED);
 			id_lb_custom.setText("Veuillez renseigner une date de fin svp");
@@ -269,9 +266,9 @@ public class AjoutAboCtrl {
 			id_lb_custom.setText("Veuillez choisir une revue svp");
 		}else if(dateFin.isBefore(dateDeb)) {
 			id_lb_custom.setTextFill(Color.RED);
-			id_lb_custom.setText("La date de fin est supérieure à la date de début");
+			id_lb_custom.setText("La date de fin est supï¿½rieure ï¿½ la date de dï¿½but");
 		}else {
-			// tout est correct, on insère dans la BdD
+			// tout est correct, on insï¿½re dans la BdD
 			Client  cli = id_cb_client.getSelectionModel().getSelectedItem();
 			Revue  rev = id_cb_revue.getSelectionModel().getSelectedItem();
 			
@@ -280,7 +277,7 @@ public class AjoutAboCtrl {
 			r.update(Abo);
 			// message de confirmation
 			id_lb_custom.setTextFill(Color.BLACK);
-			id_lb_custom.setText("Abonnement modifié dans la Bdd ");
+			id_lb_custom.setText("Abonnement modifiï¿½ dans la Bdd ");
 		}
 		remplirTable();
 		setModeAjout();
@@ -290,24 +287,24 @@ public class AjoutAboCtrl {
 	public void annulerModif() {
 		// message de confirmation
 		id_lb_custom.setTextFill(Color.BLACK);
-		id_lb_custom.setText("Modification annulée");
+		id_lb_custom.setText("Modification annulï¿½e");
 		setModeAjout();
 		remplirTable();
 	}
 	
 	@FXML
 	public void supprAbo() {
-		//on récupère la ligne sélectionnée
+		//on rï¿½cupï¿½re la ligne sï¿½lectionnï¿½e
 				ObservableList selection = id_table.getSelectionModel().getSelectedItems();
 				if(selection.size()==0) {
 					id_error_label.setTextFill(Color.RED);
-					id_error_label.setText("Aucune revue sélectionnée");
+					id_error_label.setText("Aucune revue sï¿½lectionnï¿½e");
 				}else if(selection.size() > 1) {
 					id_error_label.setTextFill(Color.RED);
-					id_error_label.setText("Plusieurs revues sélectionnées");
+					id_error_label.setText("Plusieurs revues sï¿½lectionnï¿½es");
 				}else {
-					//on supprime la ligne sélectionnée de la vue et de la bdd
-					//utilisation de la méthode delete située dans RequetesSQL
+					//on supprime la ligne sï¿½lectionnï¿½e de la vue et de la bdd
+					//utilisation de la mï¿½thode delete situï¿½e dans RequetesSQL
 					AbonnementDAO a = DAOFactory.getDAOfactory(p).getAbonnementDAO();
 					a.delete((Abonnement)selection.get(0));
 				}
